@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Proceso Detalles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Etapa</th>
+      <th>Estado</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @proceso_detalles.each do |proceso_detalle| %>
+      <tr>
+        <td><%= proceso_detalle.etapa %></td>
+        <td><%= proceso_detalle.estado %></td>
+        <td><%= link_to 'Show', proceso_detalle %></td>
+        <td><%= link_to 'Edit', edit_proceso_detalle_path(proceso_detalle) %></td>
+        <td><%= link_to 'Destroy', proceso_detalle, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Proceso Detalle', new_proceso_detalle_path %>

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Etapa:</strong>
+  <%= @proceso_detalle.etapa %>
+</p>
+
+<p>
+  <strong>Estado:</strong>
+  <%= @proceso_detalle.estado %>
+</p>
+
+<%= link_to 'Edit', edit_proceso_detalle_path(@proceso_detalle) %> |
+<%= link_to 'Back', proceso_detalles_path %>

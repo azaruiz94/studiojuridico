@@ -1,0 +1,63 @@
+<%= nested_form_for(@tipo_proceso, html: { class: "form-horizontal", role: "form" }) do |f| %>
+  <% if tipo_proceso.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tipo_proceso.errors.count, "error") %> prohibited this tipo_proceso from being saved:</h2>
+
+      <ul>
+      <% tipo_proceso.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <!-- En if-->
+  <div class="box-body">
+    <div class="row">
+      <div class="col-xs-12">
+        <label for="nombre">Nombre del tipo de proceso</label>
+        <%= f.text_field :nombre, class: "form-control"%>
+      </div>
+    </div>
+    <br>
+
+    <div class="col-xs-12">
+        <div class="box box-solid">
+          <div class="box-header with-border">
+            <h3 class="box-title">Fases del tipo proceso</h3>
+            <div class="box-tools pull-right">
+              <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            </div>
+          </div>
+          
+          <div class="box-body">
+            <table id="fases", class="table table-striped table-responsive">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Estado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <%= f.fields_for :fases, :wrapper => false do |fases_form| %>
+                  <tr class="fields">
+                    <% id = "#"+"#{fases_form.object_name}[tipo_proceso_id]".gsub(/(\])?\[/, "_").chop %>
+                    <td><%= fases_form.text_field :nombre, :size=>"50" %></td>
+                    <td><%= fases_form.text_field :estado, :value =>"Pendiente", readonly: true %></td>
+                    <td><%= fases_form.link_to_remove "", class: 'btn btn-sm glyphicon glyphicon-remove' %></td>
+                  </tr>
+                <% end %> 
+              </tbody>
+            </table>
+            <tr>
+             <%= f.link_to_add "", :fases, :data => { :target => "#fases" },  :class => "btn btn-sm glyphicon glyphicon-plus", title: 'Agregar detalle', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' %>
+            </tr>
+            
+          </div>
+        </div>
+      </div> 
+    <div class="col-xs-12 modal-footer" > 
+          <%= link_to "Cancelar", tipo_procesos_path, class: "btn btn-default", style:"color:black" %>
+          <%= f.submit "Guardar", class: "btn btn-primary", id: "guardar" %>
+      </div>
+  </div>
+<% end %>

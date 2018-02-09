@@ -1,0 +1,33 @@
+<div class="box box-primary">
+	<div class="box-header with-border">
+		<h1 align="center">Tipo de Proceso</h1>
+	</div>
+	<div class="box-body">
+		<p>
+		  <strong>Nombre:</strong>
+		  <%= @tipo_proceso.nombre %>
+		</p>
+		<br>
+		<table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Fases</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+        <tbody>
+          <% @fases_rows.each do |fase| %>
+            <tr>
+              <td><%= fase.nombre %></td>
+              <td><%= fase.estado %></td>
+            </tr>
+          <% end -%>
+        </tbody>
+      </table>
+		<div class="col-xs-12 modal-footer" > 
+          <%= link_to "Atras", tipo_procesos_path, class: "btn btn-default", style:"color:black" %>
+          <%= link_to "Editar",  edit_tipo_proceso_path(@tipo_proceso), class: "btn btn-primary", id: "guardar", style:"color:white" %>
+      </div>
+	</div>
+	
+</div>

@@ -1,0 +1,29 @@
+<div class="box box-primary">
+
+  <div class="box-body">
+    <div class="row">
+      <div class="col-md-2">
+        <%= link_to 'Nuevo Tipo', new_tipo_proceso_path(@tipo_proceso), {:class=>"btn btn-primary", style:"color:white", :method => "get"}%>
+      </div>
+    </div>
+    <br>
+    <table id="example2" class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @tipo_procesos.each do |tipo_proceso| %>
+        <tr>
+          <td><%= tipo_proceso.nombre %></td>
+          <td align="center"><%= link_to '', tipo_proceso, class: 'btn btn-primary btn-sm glyphicon glyphicon-eye-open', style:"color:white", title: 'Ver'  %>
+            <%= link_to '', edit_tipo_proceso_path(tipo_proceso), class: 'btn btn-default btn-sm glyphicon glyphicon-pencil', title: 'Editar', style: 'color: black;'  %>
+            <%= link_to '', tipo_proceso, method: :delete, data: { confirm: 'Are you sure?' },class: 'btn btn-default btn-sm glyphicon glyphicon-trash', style:"color:black", title: 'Eliminar'  %></td>
+        </tr>
+        <% end %>
+      </tbody> 
+    </table>
+  </div> 
+</div>

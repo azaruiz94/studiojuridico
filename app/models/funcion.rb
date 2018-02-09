@@ -1,0 +1,2 @@
+class Funcion < ApplicationRecord
+end
