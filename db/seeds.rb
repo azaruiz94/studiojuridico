@@ -14,4 +14,7 @@ Cliente.create(nombre: "Maria Jose", direccion: "Avda Costanera", telefono: "123
 
 Empleado.create(nombre: "Juan Ortega", direccion: "Calle Artigas", telefono: "098653234")
 
+TipoProceso.create(nombre: 'Contrato de Compra de Casa')
+
+Fase.create(nombre: 'Confección del contrato', estado: 'Pendiente', tipo_proceso_id: '1')
 
