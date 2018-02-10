@@ -40,7 +40,6 @@
               <tbody>
                 <%= f.fields_for :fases, :wrapper => false do |fases_form| %>
                   <tr class="fields">
-                    <% id = "#"+"#{fases_form.object_name}[tipo_proceso_id]".gsub(/(\])?\[/, "_").chop %>
                     <td><%= fases_form.text_field :nombre, :size=>"50" %></td>
                     <td><%= fases_form.text_field :estado, :value =>"Pendiente", readonly: true %></td>
                     <td><%= fases_form.link_to_remove "", class: 'btn btn-sm glyphicon glyphicon-remove' %></td>

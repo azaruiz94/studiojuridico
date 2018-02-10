@@ -22,7 +22,7 @@ class ProcesosController < ApplicationController
     @empleados = Empleado.all
     @fases_rows = Fase.where("tipo_proceso_id = ?", params[:id])
     @fases= Fase.where('tipo_proceso_id = ?', params[:tipo_proceso_id])
-    @estado= Fase.where("tipo_proceso_id = ?", Proceso.last.tipo_proceso_id).pluck(:estado)[0]
+    @estado= Fase.where("tipo_proceso_id = ?", params[:tipo_proceso_id]).pluck(:estado)[0]
     @fecha_ingreso= Time.now.strftime("%d/%m/%Y")
   end
 
@@ -72,7 +72,13 @@ class ProcesosController < ApplicationController
     respond_to do |format|
       if @proceso.update(proceso_params)
         @detalles_rows= ProcesoDetalle.where("proceso_id = ?", @proceso.id)
-        
+        @detalles_rows.each do |detalle|
+          detalle.update(
+            proceso_id: @proceso.id,
+           etapa: Fase.where("tipo_proceso_id = ?", @proceso.tipo_proceso_id).pluck(:nombre)[i],
+           estado: Fase.where("tipo_proceso_id = ?", @proceso.tipo_proceso_id).pluck(:estado)[i])
+          i+=1
+        end
         format.html { redirect_to @proceso, notice: 'Proceso was successfully updated.' }
         format.json { render :show, status: :ok, location: @proceso }
       else
