@@ -2,7 +2,7 @@
   <%= f.fields_for :proceso_detalles, :wrapper => false do |detalle| %>
     <tr class="fields">
       <td><%= detalle.text_field :etapa, :class => "form-control", readonly: true %></td>
-      <td><%= detalle.text_field :estado, :class => "form-control", readonly: true %></td>
+      <td><%= detalle.text_field :estado, :class => "form-control", :value => @estado, readonly: true %></td>
       <td><%= detalle.text_field :fecha, :class => "datepicker form-control" %></td>
     </tr>
   <% end %> 

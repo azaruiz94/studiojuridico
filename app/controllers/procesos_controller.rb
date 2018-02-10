@@ -33,8 +33,8 @@ class ProcesosController < ApplicationController
     @empleados = Empleado.all
     @detalles = ProcesoDetalle.where("proceso_id = ?", params[:id])
     @tipo_proceso = TipoProceso.find(Proceso.find(params[:id]).tipo_proceso_id).id
-    @cliente = TipoProceso.find(Proceso.find(params[:id]).cliente_id).id
-    @empleado = TipoProceso.find(Proceso.find(params[:id]).empleado_id).id
+    @cliente = Cliente.find(Proceso.find(params[:id]).cliente_id).id
+    @empleado = Empleado.find(Proceso.find(params[:id]).empleado_id).id
     @estado= Proceso.find(params[:id]).estado
     @fecha_ingreso= Proceso.find(params[:id]).fecha_ingreso.strftime("%d/%m/%Y")
     @fecha_salida= Proceso.find(params[:id]).fecha_salida.strftime("%d/%m/%Y")
