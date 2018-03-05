@@ -7,7 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Rol.create(nombre: "admin")
-Rol.create(id: "1", nombre: "admin", created_at: Time.now(), updated_at: Time.now())
 Rol.create(nombre: "Gestor Contensioso - Adm")
 Rol.create(nombre: "Gestor Civil-Laboral")
 
