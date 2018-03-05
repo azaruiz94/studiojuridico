@@ -171,7 +171,7 @@ ActiveRecord::Schema.define(version: 20180301113417) do
     t.string   "resource_type"
     t.integer  "resource_id"
     t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "updated_at",    null: false   
     t.index ["nombre", "resource_type", "resource_id"], name: "index_roles_on_nombre_and_resource_type_and_resource_id", using: :btree
     t.index ["nombre"], name: "index_roles_on_nombre", using: :btree
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id", using: :btree

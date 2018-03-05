@@ -10,6 +10,10 @@ Rol.create(id: "1", nombre: "admin")
 Rol.create(id: "2", nombre: "Gestor Contensioso - Adm")
 Rol.create(id: "3", nombre: "Gestor Civil-Laboral")
 
+Cliente.create(nombre: "Maria Jose", direccion: "Avda. Costanera", telefono: "12322342", email: "maria@gmail.com", ruc: "232133-2", tipo_cliente_id: "1")
+Cliente.create(nombre: "Juan Perez", direccion: "Gral. Artigas No. 2334", telefono: "7565564", email: "juanperez@gmail.com", ruc: "834784-5", tipo_cliente_id: "2")
+Cliente.create(nombre: "Carlos Mateo", direccion: "Avda Caballero", telefono: "3453434", email: "carlosm@gmail.com",ruc: "9486973-3", tipo_cliente_id: "2")
+
 user= Usuario.new
 user= Usuario.create(nombre: "Abog. Dario Lopez", email: "dario@gmail.com", empleado_id: "1", rol_id: "1", password: "123456", password_confirmation: "123456")
 user= Usuario.create(nombre: "Lic. Marta Torres", email: "marta@gmail.com", empleado_id: "2", rol_id: "2", password: "123456", password_confirmation: "123456")
@@ -36,9 +40,7 @@ Objeto.create(nombre: "un objeto laboral especial", proceso: "Laboral", tipo_pro
 Objeto.create(nombre: "un objeto laboral ordinario", proceso: "Laboral", tipo_proceso: "Ordinario")
 Objeto.create(nombre: "un objeto laboral sumario", proceso: "Laboral", tipo_proceso: "Sumario")
 
-Cliente.create(nombre: "Maria Jose", direccion: "Avda. Costanera", telefono: "12322342", email: "maria@gmail.com", ruc: "232133-2", tipo_cliente_id: "1")
-Cliente.create(nombre: "Juan Perez", direccion: "Gral. Artigas No. 2334", telefono: "7565564", email: "juanperez@gmail.com", ruc: "834784-5", tipo_cliente_id: "2")
-Cliente.create(nombre: "Carlos Mateo", direccion: "Avda Caballero", telefono: "3453434", email: "carlosm@gmail.com",ruc: "9486973-3", tipo_cliente_id: "2")
+
 
 Empleado.create(nombre: "Abog. Dario Lopez", direccion: "Corrientes N° 234", telefono: "833453423", email: "dario@gmail.com", ruc: "343537-4", ciudad_id: "1")
 Empleado.create(nombre: "Lic. Marta Torres", direccion: "Constitucion Nacional N° 68", telefono: "445345534", email: "marta@gmail.com", ruc: "363434-4", ciudad_id: "2")
