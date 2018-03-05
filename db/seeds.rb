@@ -10,6 +10,11 @@ Rol.create(id: "1", nombre: "admin")
 Rol.create(id: "2", nombre: "Gestor Contensioso - Adm")
 Rol.create(id: "3", nombre: "Gestor Civil-Laboral")
 
+user= Usuario.new
+user= Usuario.create(nombre: "Abog. Dario Lopez", email: "dario@gmail.com", empleado_id: "1", rol_id: "1", password: "123456", password_confirmation: "123456")
+user= Usuario.create(nombre: "Lic. Marta Torres", email: "marta@gmail.com", empleado_id: "2", rol_id: "2", password: "123456", password_confirmation: "123456")
+user= Usuario.create(nombre: "Dr. Ruben Miranda", email: "ruben@gmail.com", empleado_id: "3", rol_id: "3", password: "123456", password_confirmation: "123456")
+
 Departamento.create(nombre: "Itapúa")
 Departamento.create(nombre: "Misiones")
 Departamento.create(nombre: "Central")
@@ -40,10 +45,6 @@ Empleado.create(nombre: "Lic. Marta Torres", direccion: "Constitucion Nacional N
 Empleado.create(nombre: "Dr. Ruben Miranda", direccion: "Avda. Irrazabal", telefono: "9375344", email: "ruben@gmail.com", ruc: "698394-4", ciudad_id: "3")
 
 Institucion.create(nombre: "Entidad Binacional Yacyreta", direccion: "Circuito Comercial - Encarnacion", telefonoA: "021222345", email: "eby@gov.com.py", ruc: "32756556-5", departamento_id: "1", autoridad: "Ing. Poncho López")
-user= Usuario.new
-user= Usuario.create(nombre: "Abog. Dario Lopez", email: "dario@gmail.com", empleado_id: "1", rol_id: "1", password: "123456", password_confirmation: "123456")
-user= Usuario.create(nombre: "Lic. Marta Torres", email: "marta@gmail.com", empleado_id: "2", rol_id: "2", password: "123456", password_confirmation: "123456")
-user= Usuario.create(nombre: "Dr. Ruben Miranda", email: "ruben@gmail.com", empleado_id: "3", rol_id: "3", password: "123456", password_confirmation: "123456")
 
 Accion.create(nombre: "Ver Procesos")
 Accion.create(nombre: "Crear Procesos")
