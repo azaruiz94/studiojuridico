@@ -1,4 +1,5 @@
 class CiudadesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_ciudad, only: [:show, :edit, :update, :destroy]
 
   # GET /ciudades
@@ -15,10 +16,13 @@ class CiudadesController < ApplicationController
   # GET /ciudades/new
   def new
     @ciudad = Ciudad.new
+    @departamentos= Departamento.all
   end
 
   # GET /ciudades/1/edit
   def edit
+    @departamentos= Departamento.all
+    @departamento= Ciudad.find(params[:id]).departamento_id
   end
 
   # POST /ciudades
@@ -28,7 +32,7 @@ class CiudadesController < ApplicationController
 
     respond_to do |format|
       if @ciudad.save
-        format.html { redirect_to @ciudad, notice: 'Ciudad was successfully created.' }
+        format.html { redirect_to ciudades_url, notice: 'La ciudad fue creada con éxito.' }
         format.json { render :show, status: :created, location: @ciudad }
       else
         format.html { render :new }
@@ -42,7 +46,7 @@ class CiudadesController < ApplicationController
   def update
     respond_to do |format|
       if @ciudad.update(ciudad_params)
-        format.html { redirect_to @ciudad, notice: 'Ciudad was successfully updated.' }
+        format.html { redirect_to ciudades_url, notice: 'La ciudad fue actualizada con éxito.' }
         format.json { render :show, status: :ok, location: @ciudad }
       else
         format.html { render :edit }
@@ -56,7 +60,7 @@ class CiudadesController < ApplicationController
   def destroy
     @ciudad.destroy
     respond_to do |format|
-      format.html { redirect_to ciudades_url, notice: 'Ciudad was successfully destroyed.' }
+      format.html { redirect_to ciudades_url, notice: 'La ciudad fue eliminada con éxito.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +73,6 @@ class CiudadesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ciudad_params
-      params.require(:ciudad).permit(:nombre)
+      params.require(:ciudad).permit(:nombre, :departamento_id)
     end
 end

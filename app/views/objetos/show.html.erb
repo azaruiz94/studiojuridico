@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Proceso:</strong>
+  <%= @objeto.proceso %>
+</p>
+
+<p>
+  <strong>Tipo proceso:</strong>
+  <%= @objeto.tipo_proceso %>
+</p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @objeto.nombre %>
+</p>
+
+<%= link_to 'Edit', edit_objeto_path(@objeto) %> |
+<%= link_to 'Back', objetos_path %>

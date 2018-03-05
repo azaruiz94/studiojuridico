@@ -1,5 +1,7 @@
 class UsuariosController < ApplicationController
+  load_and_authorize_resource
   before_action :set_usuario, only: [:show, :edit, :update, :destroy]
+
 
   # GET /usuarios
   # GET /usuarios.json
@@ -15,17 +17,18 @@ class UsuariosController < ApplicationController
   # GET /usuarios/new
   def new
     @usuario = Usuario.new
+    @roles= Rol.all
   end
 
   # GET /usuarios/1/edit
   def edit
+    @roles= Rol.all
   end
 
   # POST /usuarios
   # POST /usuarios.json
   def create
     @usuario = Usuario.new(usuario_params)
-
     respond_to do |format|
       if @usuario.save
         format.html { redirect_to @usuario, notice: 'Usuario was successfully created.' }
@@ -69,6 +72,6 @@ class UsuariosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def usuario_params
-      params.require(:usuario).permit(:nombre)
+      params.require(:usuario).permit(:nombre, :empleado_id, :email, :password, :password_confirmation, :rol_id)
     end
 end

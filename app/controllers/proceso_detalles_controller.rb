@@ -1,4 +1,5 @@
 class ProcesoDetallesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_proceso_detalle, only: [:show, :edit, :update, :destroy]
 
   # GET /proceso_detalles
@@ -69,6 +70,6 @@ class ProcesoDetallesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def proceso_detalle_params
-      params.require(:proceso_detalle).permit(:etapa, :estado, :fecha)
+      params.require(:proceso_detalle).permit(:numero, :lugar, :fecha_entrada, :fecha_salida)
     end
 end

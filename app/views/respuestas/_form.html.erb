@@ -1,0 +1,73 @@
+<%= form_for(respuesta, validate: true) do |f| %>
+  <% if respuesta.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(respuesta.errors.count, "error") %> prohibited this respuesta from being saved:</h2>
+
+      <ul>
+      <% respuesta.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="box-body">
+    <div class="row">
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="form-group has-feedback">
+              <label for="memo">N° de memo</label>
+              <%= f.text_field :memo, class: "form-control" %>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group has-feedback">
+              <label for="fecha">Fecha de comunicacón</label>
+              <%= f.text_field :fecha, class: " form-control datepicker" %>
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+            <div class="form-group has-feedback">
+              <label for="medios">Otros medios</label>
+              <%= f.text_field :medios, class: "form-control"  %>
+            </div>
+          </div>
+        </div> 
+      </div>
+
+      <div class="col-sm-4">
+        <div class="form-group has-feedback">
+          <label>Cliente</label>
+          <%= text_field_tag :cliente, @cliente, class: "form-control", :readonly => true %>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="form-group has-feedback">
+          <label>Correo</label>
+          <%= text_field_tag :correo, @correo, class: "form-control", :readonly => true%>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="form-group has-feedback">
+          <label>Referencia</label>
+          <%= text_field_tag :referencia, @referencia, class: "form-control", :readonly => true %>
+        </div>
+      </div>
+
+      <div class="col-sm-12">
+        <div class="form-group has-feedback">
+          <label for="descripcion">Descripción</label>
+          <%= f.text_area :descripcion, class: "ckeditor form-control"  %>
+        </div>
+      </div>
+
+      <div class="col-sm-12 modal-footer" > 
+        <%= link_to "Cancelar", procesos_path, class: "btn btn-default", style:"color:black" %>
+        <%= f.submit "Guardar", class: "btn btn-primary", id: "guardar" %>
+      </div>  
+      
+    </div>
+  </div>
+<% end %>

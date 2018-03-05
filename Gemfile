@@ -68,3 +68,10 @@ gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
 # Select con token_fields
 gem 'chosen-rails'
+gem 'jquery-datatables-rails'
+gem 'ckeditor'
+gem 'client_side_validations'
+gem 'toastr-rails'
+gem "rolify"
+gem 'cancancan', '~> 2.0'
+gem 'rails-jquery-autocomplete'

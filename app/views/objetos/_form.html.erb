@@ -1,0 +1,38 @@
+<%= form_for(objeto, :validate => true) do |f| %>
+  <% if objeto.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(objeto.errors.count, "error") %> prohibited this objeto from being saved:</h2>
+
+      <ul>
+      <% objeto.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="box-body">
+  <div class="row">
+    <div class="col-xs-6">
+      <label for="proceso">Proceso</label>
+      <%= f.select(:proceso, options_for_select({ "Civil" => "Civil", "Laboral" => "Laboral" }, @proceso), {prompt: 'Seleccione el proceso'}, {:class =>"form-control"})%>
+    </div>
+
+    <div class="col-xs-6">
+      <label for="proceso">Tipo de proceso</label>
+      <%= f.select(:tipo_proceso, options_for_select({ "Ejecutivo" => "Ejecutivo", "Especial" => "Especial",
+       "Ordinario" => "Ordinario", "Sumario" => "Sumario" }, @tipo_proceso), {prompt: 'Seleccione el tipo de proceso'}, {:class =>"form-control"})%>
+    </div>
+
+    <div class="col-xs-12">
+      <%= f.label :nombre %>
+      <%= f.text_field :nombre, class: "form-control"%>
+    </div>
+
+    <div class="col-xs-12 modal-footer" > 
+      <%= link_to "Cancelar", objetos_path, class: "btn btn-default", style:"color:black" %>
+      <%= f.submit "Guardar", class: "btn btn-primary", id: "guardar" %>
+    </div>
+  </div>
+</div>
+  
+<% end %>

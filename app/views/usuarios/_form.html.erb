@@ -1,4 +1,4 @@
-<%= form_for(usuario) do |f| %>
+<%= form_for(usuario, validate: true) do |f| %>
   <% if usuario.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(usuario.errors.count, "error") %> prohibited this usuario from being saved:</h2>
@@ -10,13 +10,41 @@
       </ul>
     </div>
   <% end %>
+  <div class="box-body">
+    <div class="col-xs-12 form-group">
+      <label for="ci">RUC o CI</label>
+      <%= f.autocomplete_field :empleado_id, autocomplete_empleado_ruc_empleados_path, placeholder: "Ingrese ruc o ci", :multiple => false, update_elements: {:id=> "#id-empleado", :nombre => '#nombre', :email => '#email'} , class: "form-control", required: true %>
+      <%=f.hidden_field :empleado_id, id: 'id-empleado' %>
+    </div>
 
-  <div class="field">
-    <%= f.label :nombre %>
-    <%= f.text_field :nombre %>
-  </div>
+    <div class="col-xs-6 form-group">
+      <%= f.label :nombre %>
+      <%= f.text_field :nombre, class: "form-control", id: 'nombre', readonly: true%>
+    </div>
 
-  <div class="actions">
-    <%= f.submit %>
+    <div class="col-xs-6 form-group">
+      <%= f.label :email %>
+      <%= f.text_field :email, class: "form-control", id: 'email', readonly: true%>
+    </div>
+
+    <div class="col-xs-6 form-group">
+      <label for="password">Contraseña</label>
+      <%= f.password_field :password,  class: "form-control", placeholder: "Contraseña", required: true  %>
+    </div>
+
+    <div class="col-xs-6 form-group">
+      <label for="password_confirmation">Confirmar Contraseña</label>
+      <%= f.password_field :password_confirmation,  class: "form-control", placeholder: "Confirmar Contraseña", required: true  %>
+    </div>
+
+    <div class="col-xs-12 form-group" >
+      <label>Rol</label>
+      <%= f.select :rol_id, options_for_select(@roles.collect { |r| [r.nombre, r.id ]}), {prompt: 'Seleccione un rol'}, {class: "form-control"} %>
+    </div>
+
+    <div class="col-sm-12 modal-footer" > 
+      <%= link_to "Cancelar", usuarios_path, class: "btn btn-default", style:"color:black" %>
+      <%= f.submit "Guardar", class: "btn btn-primary", id: "guardar" %>
+    </div>
   </div>
 <% end %>

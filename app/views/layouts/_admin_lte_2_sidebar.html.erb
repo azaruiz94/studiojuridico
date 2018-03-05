@@ -10,9 +10,9 @@
         <img src="/assets/user2-160x160.jpg" class="img-circle" alt="User Image" />
       </div>
       <div class="pull-left info">
-        <p>Alexander Pierce</p>
+        <p><%= current_usuario.nombre %></p>
         <!-- Status -->
-        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        <a href="#"><i class="fa fa-circle text-success"></i> En línea</a>
       </div>
     </div>
 
@@ -29,18 +29,68 @@
 
     <!-- Sidebar Menu -->
     <ul class="sidebar-menu">
-      <li class="header">HEADER</li>
+      <li class="header">ENLACES</li>
         <!-- Optionally, you can add icons to the links -->
-      <li class="active"><a href="/procesos"><i class='fa fa-link'></i> <span>Procesos</span></a></li>
-      <li><a href="/tipo_procesos"><i class='fa fa-link'></i> <span>Tipos de procesos</span></a></li>
-      <li class="treeview">
-        <a href="#"><i class='fa fa-link'></i> <span>Personas</span> <i class="fa fa-angle-left pull-right"></i></a>
-        <ul class="treeview-menu">
-          <li><a href="/clientes">Clientes</a></li>
-          <li><a href="/empleados">Empleados</a></li>
-          <li><a href="/usuarios">Usuarios</a></li>
-        </ul>
-      </li>
+      <%if can? :show, Proceso or can? :show, Juicio%>
+        <li class="treeview">
+          <a href="#"><i class='fa fa-link'></i> <span>Procesos</span> <i class="fa fa-angle-left pull-right"></i></a>
+          <ul class="treeview-menu">
+            <% if can? :show, Proceso, ProcesoDetalle %>
+              <li><a href="/procesos">Contensioso Adm.</a></li>
+            <% end -%>
+            <% if can? :show, Juicio, Actuacion %>
+              <li><a href="/juicios">Civil-Laboral</a></li>
+            <% end -%>
+          </ul>
+        </li>
+      <% end -%>
+      <%if can? :show, Cliente or can? :show, Empleado%>
+        <li class="treeview">
+          <a href="#"><i class='fa fa-link'></i> <span>Personas</span> <i class="fa fa-angle-left pull-right"></i></a>
+          <ul class="treeview-menu">
+            <% if can? :show, Cliente %>
+              <li><a href="/clientes">Clientes</a></li>
+            <% end -%>
+            <% if can? :show, Empleado %>
+              <li><a href="/empleados">Empleados</a></li>
+            <% end -%>
+          </ul>
+        </li>
+      <% end -%>
+
+      <%if can? :show, Usuario or can? :show, Rol%>
+        <li class="treeview">
+          <a href="#"><i class='fa fa-link'></i> <span>Sistema</span> <i class="fa fa-angle-left pull-right"></i></a>
+          <ul class="treeview-menu">
+            <% if can? :show, Usuario %>
+              <li><a href="/usuarios">Usuarios</a></li>
+            <% end -%>
+            <% if can? :show, Rol %>
+              <li><a href="/roles">Roles</a></li>
+            <% end -%>
+          </ul>
+        </li>
+      <% end -%>
+
+      <%if can? :show, Ciudad or can? :show, Departamento or can? :show, Ciudad or can? :show, Objeto%>
+        <li class="treeview">
+          <a href="#"><i class='fa fa-link'></i> <span>Registros</span> <i class="fa fa-angle-left pull-right"></i></a>
+          <ul class="treeview-menu">
+            <% if can? :show, Ciudad %>
+              <li><a href="/ciudades">Ciudades</a></li>
+            <% end -%>
+            <% if can? :show, Departamento %>
+              <li><a href="/departamentos">Departamentos</a></li>
+            <% end -%>
+            <% if can? :show, Institucion %>
+              <li><a href="/instituciones">Instituciones</a></li>
+            <% end -%>
+            <% if can? :show, Objeto %>
+              <li><a href="/objetos">Objeto de casos</a></li>
+            <% end -%>
+          </ul>
+        </li>
+      <% end -%>
     </ul><!-- /.sidebar-menu -->
   </section>
   <!-- /.sidebar -->

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  exp_numero: 1
+  caratula: MyString
+  fiscal: MyString
+  proceso: MyString
+  tipo_proceso: MyString
+
+two:
+  exp_numero: 1
+  caratula: MyString
+  fiscal: MyString
+  proceso: MyString
+  tipo_proceso: MyString

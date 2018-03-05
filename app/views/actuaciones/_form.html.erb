@@ -1,0 +1,37 @@
+<%= form_for(actuacion) do |f| %>
+  <% if actuacion.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(actuacion.errors.count, "error") %> prohibited this actuacion from being saved:</h2>
+
+      <ul>
+      <% actuacion.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :numero %>
+    <%= f.number_field :numero %>
+  </div>
+
+  <div class="field">
+    <%= f.label :fecha %>
+    <%= f.date_select :fecha %>
+  </div>
+
+  <div class="field">
+    <%= f.label :descripcion %>
+    <%= f.text_field :descripcion %>
+  </div>
+
+  <div class="field">
+    <%= f.label :tipo %>
+    <%= f.text_field :tipo %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

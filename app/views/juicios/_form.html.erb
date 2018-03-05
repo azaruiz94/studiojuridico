@@ -1,0 +1,128 @@
+<%= nested_form_for(@juicio, validate: true, html: { class: "form-horizontal", role: "form" }) do |f| %>
+  <% if juicio.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(juicio.errors.count, "error") %> prohibited this juicio from being saved:</h2>
+
+      <ul>
+      <% juicio.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="box-body">
+    <div class="row align-items-center">
+      <div class="col-xs-12">
+        <div class="box box-solid">
+          <div class="box-header with-border">
+            <h3 class="box-title">Datos del proceso</h3>
+            <div class="box-tools pull-right">
+              <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            </div>
+          </div>
+          <div class="box-body">
+            <div class="col-sm-4">
+              <div class="has-feedback">
+                <label for="cliente_id">Cliente</label>
+                <%= f.select :cliente_id, options_for_select(@clientes.collect { |r| [r.nombre, r.id ]}, @cliente), {prompt: 'Seleccione el cliente'}, {class: "form-control", id: "cliente_id", "data-select2-validate"=>"true"}%>
+              </div>
+            </div>
+
+            <div class="col-sm-4 ">
+              <div class="has-feedback">
+                <label for="empleado_id">Encargado</label>
+                <%= f.select :empleado_id, options_for_select(@empleados.collect { |r| [r.nombre, r.id ]}, @empleado), {prompt: 'Seleccione el empleado'}, {class: "form-control" , id: "empleado_id", "data-select2-validate"=>"true"} %>
+              </div>
+            </div>
+
+            <div class="col-sm-4 has-feedback">
+              <label for="circunscripcion">Circunscripción</label>
+              <%= f.select(:circunscripcion, options_for_select({
+                "1°- Capital" => "1",
+                "2°- Guaira" => "2",
+                "3°- Itapúa" => "3",
+                "4°- Concepción" => "4",
+                "5°- Amambay" => "5",
+                "6°- Alto Paraná" => "6",
+                "7°- Caaguazú" => "7",
+                "8°- Ñeembucú" => "8",
+                "9°- Misiones" => "9",
+                "10°- Paraguarí" => "10",
+                "11°- Caazapá" => "11",
+                "12°- San Pedro" => "12",
+                "13°- Cordillera" => "13",
+                "14°- Pte. Halles" => "14",
+                "15°- Canindeyú" => "15",
+                "16°- Central" => "16"
+                 }, @circunscripcion), {prompt: 'Seleccione la circunscripción'}, {class: "form-control"})%>
+            </div>
+
+            <div class="col-sm-4 has-feedback">
+              <label for="exp_numero">Número de nota</label>
+              <%= f.number_field :exp_numero,  class: "form-control" %>
+            </div>
+
+            <div class="col-sm-4 has-feedback">
+              <label for="caratula">Carátula</label>
+              <%= f.text_field :caratula,  class: "form-control" %>
+            </div>
+
+            <div class="col-sm-4 has-feedback">
+              <label for="fiscal">Fiscal a cargo</label>
+              <%= f.text_field :fiscal,  class: "form-control" %>
+            </div>
+
+            <div class="col-sm-6 has-feedback">
+              <label for="proceso">Proceso</label>
+              <%= f.select(:proceso, options_for_select({ "Civil" => "Civil", "Laboral" => "Laboral" }, @proceso), {prompt: 'Seleccione el proceso'}, {:class =>"form-control"})%>
+            </div>
+
+            <div class="col-sm-6 has-feedback">
+              <label for="tipo_proceso">Tipo de proceso</label>
+              <%= f.select(:tipo_proceso, options_for_select({ "Ejecutivo" => "Ejecutivo", "Especial" => "Especial",
+               "Ordinario" => "Ordinario", "Sumario" => "Sumario" }, @tipo_proceso), {prompt: 'Seleccione el tipo de proceso'}, {:class =>"form-control"})%>
+            </div>
+
+             <div class="col-sm-12 has-feedback">
+              <label for="objeto_id">Objeto</label>
+              <%= f.select :objeto_id, options_for_select(@objetos.collect { |r| [r.nombre, r.id ]}, :selected => @objeto) , {prompt: 'Seleccione el objeto del caso'}, {class: "form-control", id: 'objeto_id'}%>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12">
+        <div class="box box-solid">
+          <div class="box-header with-border">
+            <h3 class="box-title">Actuaciones</h3>
+            <div class="box-tools pull-right">
+              <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            </div>
+          </div>
+          <div class="box-body">
+            <table id="detalles", class="table table-striped table-responsive">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Fecha</th>
+                  <th>Descripción</th>
+                  <th>Tipo</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @item= 0%>
+                <%= render :partial => 'detalles_fields', :locals => { :f => f, :i => @item }%>
+              </tbody>
+            </table>
+            <tr>
+             <%= f.link_to_add "", :actuaciones, :data => { :target => "#detalles" },  :class => "btn btn-sm glyphicon glyphicon-plus", title: 'Agregar detalle', 'data-toggle' => 'tooltip', 'data-placement' => 'rigth' %>
+            </tr>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 modal-footer" > 
+        <%= link_to "Cancelar", juicios_path, class: "btn btn-default", style:"color:black" %>
+        <%= f.submit "Guardar", class: "btn btn-primary", id: "guardar" %>
+      </div>
+    </div>
+  </div>
+<% end %>

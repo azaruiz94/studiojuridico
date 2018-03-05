@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  memo: MyString
+  fecha: 2018-02-20
+  medios: MyString
+  descripcion: MyString
+
+two:
+  memo: MyString
+  fecha: 2018-02-20
+  medios: MyString
+  descripcion: MyString

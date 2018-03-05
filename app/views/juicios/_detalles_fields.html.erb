@@ -1,0 +1,9 @@
+<%= f.fields_for :actuaciones, f.object.actuaciones.order(:numero =>"desc"), :wrapper => false do |detalle| %>
+	<tr class="fields">
+        <td><%= detalle.text_field :numero, :class => "numero form-control", size: '1', id: "numero", readonly: true%></td>
+       	<td><%= detalle.text_field :fecha, class: "datepicker form-control", :validate => true%></td>
+        <td><%= detalle.text_field :descripcion, class: "form-control", :validate => true %></td>
+        <td><%= detalle.text_field :tipo, class: "form-control" %></td>
+        <td><%= detalle.link_to_remove '', :class => "btn btn-sm glyphicon glyphicon-remove", title: 'Eliminar' %></td>
+    </tr>
+<% end %>

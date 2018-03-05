@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Actuaciones</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Numero</th>
+      <th>Fecha</th>
+      <th>Descripcion</th>
+      <th>Tipo</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @actuaciones.each do |actuacion| %>
+      <tr>
+        <td><%= actuacion.numero %></td>
+        <td><%= actuacion.fecha %></td>
+        <td><%= actuacion.descripcion %></td>
+        <td><%= actuacion.tipo %></td>
+        <td><%= link_to 'Show', actuacion %></td>
+        <td><%= link_to 'Edit', edit_actuacion_path(actuacion) %></td>
+        <td><%= link_to 'Destroy', actuacion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Actuacion', new_actuacion_path %>

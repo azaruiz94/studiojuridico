@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Respuestas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Memo</th>
+      <th>Fecha</th>
+      <th>Medios</th>
+      <th>Descripcion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @respuestas.each do |respuesta| %>
+      <tr>
+        <td><%= respuesta.memo %></td>
+        <td><%= respuesta.fecha %></td>
+        <td><%= respuesta.medios %></td>
+        <td><%= respuesta.descripcion %></td>
+        <td><%= link_to 'Show', respuesta %></td>
+        <td><%= link_to 'Edit', edit_respuesta_path(respuesta) %></td>
+        <td><%= link_to 'Destroy', respuesta, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Respuesta', new_respuesta_path %>

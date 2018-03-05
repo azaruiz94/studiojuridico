@@ -1,62 +1,69 @@
 <div class="box box-primary">
   <div class="box-header with-border">
-    <h1 align="center">Tipo de Proceso</h1>
+    <h1 align="center">Mostrando Proceso</h1>
 
   </div>
 
   <div class="box-body">
+    <div class="col-xs-4">
+      <p>
+        <strong>Doc numero:</strong>
+        <%= @proceso.doc_numero %>
+      </p>
+      <p>
+        <strong>Referencia:</strong>
+        <%= @proceso.referencia %>
+      </p>
+      <p>
+        <strong>Estado:</strong>
+        <%= @proceso.estado %>
+      </p>
+    </div>
     
-    <p>
-      <strong>Doc numero:</strong>
-      <%= @proceso.doc_numero %>
-    </p>
-    <p>
-      <strong>Referencia:</strong>
-      <%= @proceso.referencia %>
-    </p>
-    <p>
-      <strong>Estado:</strong>
-      <%= @proceso.estado %>
-    </p>
-    <p>
-      <strong>Descripcion:</strong>
-      <%= @proceso.descripcion %>
-    </p>
-    <p>
-      <strong>Fecha ingreso:</strong>
-      <%= @proceso.fecha_ingreso %>
-    </p>
-    <p>
-      <strong>Fecha salida:</strong>
-      <%= @proceso.fecha_salida %>
-    </p>
-    <p>
-      <strong>Cliente:</strong>
-      <%= @proceso.cliente.nombre %>
-    </p>
-    <p>
-      <strong>Proceso:</strong>
-      <%= @proceso.tipo_proceso.nombre %>
-    </p>
-    <p>
-      <strong>Encargado:</strong>
-      <%= @proceso.empleado.nombre %>
-    </p>
+    <div class="col-xs-4">
+       <p>
+        <strong>Descripcion:</strong>
+        <%= @proceso.descripcion %>
+      </p>
+      <p>
+        <strong>Fecha ingreso:</strong>
+        <%= @proceso.fecha_ingreso %>
+      </p>
+      <p>
+        <strong>Fecha salida:</strong>
+        <%= @proceso.fecha_salida %>
+      </p>
+      
+    </div>
+
+    <div class="col-xs-4">
+      <p>
+        <strong>Cliente:</strong>
+        <%= @proceso.cliente.nombre %>
+      </p>
+      <p>
+        <strong>Encargado:</strong>
+        <%= @proceso.empleado.nombre %>
+      </p>
+      
+    </div>
     <br>
     <table class="table table-bordered table-striped">
       <thead>
         <tr>
-          <th>Etapas del proceso</th>
-          <th>Estado</th>
-          <th>Fecha Limite</th>
+          <th>#</th>
+          <th>Ubicación</th>
+          <th>Fecha de Entrada</th>
+          <th>Fecha de Salida</th>
         </tr>
       </thead>
         <tbody>
           <% @detalles.each do |detalle| %>
             <tr>
-              <td><%= detalle.etapa %></td>
-              <td><%= detalle.estado %></td>
-              <td><%= detalle.fecha %></td>
+              <td><%= detalle.numero %></td>
+              <td><%= detalle.lugar %></td>
+              <td><%= detalle.fecha_entrada.strftime("%d/%m/%Y") if detalle.fecha_entrada%></td>
+              <td><%= detalle.fecha_salida.strftime("%d/%m/%Y") if  detalle.fecha_salida %></td>
             </tr>
           <% end -%>
         </tbody>

@@ -17,7 +17,7 @@ class ProcesoDetallesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create proceso_detalle" do
     assert_difference('ProcesoDetalle.count') do
-      post proceso_detalles_url, params: { proceso_detalle: { estado: @proceso_detalle.estado, etapa: @proceso_detalle.etapa } }
+      post proceso_detalles_url, params: { proceso_detalle: { fecha_entrada: @proceso_detalle.fecha_entrada, fecha_salida: @proceso_detalle.fecha_salida, lugar: @proceso_detalle.lugar, numero: @proceso_detalle.numero } }
     end
 
     assert_redirected_to proceso_detalle_url(ProcesoDetalle.last)
@@ -34,7 +34,7 @@ class ProcesoDetallesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update proceso_detalle" do
-    patch proceso_detalle_url(@proceso_detalle), params: { proceso_detalle: { estado: @proceso_detalle.estado, etapa: @proceso_detalle.etapa } }
+    patch proceso_detalle_url(@proceso_detalle), params: { proceso_detalle: { fecha_entrada: @proceso_detalle.fecha_entrada, fecha_salida: @proceso_detalle.fecha_salida, lugar: @proceso_detalle.lugar, numero: @proceso_detalle.numero } }
     assert_redirected_to proceso_detalle_url(@proceso_detalle)
   end
 

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Memo:</strong>
+  <%= @respuesta.memo %>
+</p>
+
+<p>
+  <strong>Fecha:</strong>
+  <%= @respuesta.fecha %>
+</p>
+
+<p>
+  <strong>Medios:</strong>
+  <%= @respuesta.medios %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @respuesta.descripcion %>
+</p>
+
+<%= link_to 'Edit', edit_respuesta_path(@respuesta) %> |
+<%= link_to 'Back', respuestas_path %>

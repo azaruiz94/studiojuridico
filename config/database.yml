@@ -83,5 +83,5 @@ test:
 production:
   <<: *default
   database: StudioJuridico_production
-  username: StudioJuridico
-  password: <%= ENV['STUDIOJURIDICO_DATABASE_PASSWORD'] %>
+  username: postgres
+  password: 1234

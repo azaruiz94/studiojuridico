@@ -18,4 +18,9 @@
 ActiveSupport::Inflector.inflections(:en) do |inflect|
    inflect.irregular 'funcion', 'funciones'
    inflect.irregular 'ciudad', 'ciudades'
+   inflect.irregular 'institucion', 'instituciones'
+   inflect.irregular 'actuacion', 'actuaciones'
+   inflect.irregular 'respuesta', 'respuestas'
+   inflect.irregular 'rol', 'roles'
+   inflect.irregular 'accion', 'acciones'
  end

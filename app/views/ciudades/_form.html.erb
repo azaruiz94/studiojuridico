@@ -1,4 +1,4 @@
-<%= form_for(ciudad) do |f| %>
+<%= form_for(ciudad, validate: true) do |f| %>
   <% if ciudad.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(ciudad.errors.count, "error") %> prohibited this ciudad from being saved:</h2>
@@ -10,13 +10,21 @@
       </ul>
     </div>
   <% end %>
+  <div class="box-body">
+    <div class="row">
+      <div class="col-xs-6">
+        <%= f.label :nombre %>
+        <%= f.text_field :nombre, class: "form-control"%>
+      </div>
+      <div class="col-xs-6">
+        <%= f.label :departamento_id %>
+        <%= f.select :departamento_id, options_for_select(@departamentos.collect { |r| [r.nombre, r.id ]}, @departamento), {prompt: 'Seleccione el departamento'}, class: "js-departamento-placeholder-single form-control"%>
+      </div>
 
-  <div class="field">
-    <%= f.label :nombre %>
-    <%= f.text_field :nombre %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
+      <div class="col-xs-12 modal-footer" >
+        <%= link_to "Cancelar", ciudades_path, class: "btn btn-default", style:"color:black" %>
+        <%= f.submit "Guardar", class: "btn btn-primary", id: "guardar" %>
+      </div>
+    </div>
   </div>
 <% end %>

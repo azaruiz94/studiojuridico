@@ -1,9 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  etapa: MyString
-  estado: MyString
+  numero: 1
+  lugar: MyString
+  fecha_entrada: 2018-02-12
+  fecha_salida: 2018-02-12
 
 two:
-  etapa: MyString
-  estado: MyString
+  numero: 1
+  lugar: MyString
+  fecha_entrada: 2018-02-12
+  fecha_salida: 2018-02-12

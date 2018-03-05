@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  proceso: MyString
+  tipo_proceso: MyString
+  nombre: MyString
+
+two:
+  proceso: MyString
+  tipo_proceso: MyString
+  nombre: MyString

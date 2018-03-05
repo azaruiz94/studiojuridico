@@ -1,0 +1,31 @@
+<div class="box box-primary">	
+  <div class="box-header with-border">
+	 <h1 align="center">Ver Rol</h1>
+  </div>
+  <div class="box-body">
+  	<div class="row">
+		 <div class="col-md-12">
+		    <label for="nombre">Nombre: </label>
+		      <%= @rol.nombre.capitalize %>
+		 </div>
+		 <div class="col-xs-12">
+ 	 	 	<table class="table table-striped">
+ 	 			<thead align="center">
+ 	 		        <tr>
+ 	 		            <th>Acciones Permitidas</th>
+ 	 		        </tr>
+ 	 		    </thead>
+ 	 			    <tbody>
+ 	 				<tr>
+ 	 					<td> 
+ 	 						<% @rol.acciones.each do |r|%>
+ 	 						<li style="list-style:none;"><%= r.nombre %></li>
+ 	 						<% end -%>
+ 	 					</td>
+ 	 				</tr>
+ 	 			</tbody>
+ 	 		</table>	
+		 </div>
+	  </div>
+  </div>
+</div>

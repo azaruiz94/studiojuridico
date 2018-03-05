@@ -1,29 +1,38 @@
-<p id="notice"><%= notice %></p>
+<div class="box box-primary">
+  <div class="box-header with-border">
+    <h1 align="center">Tipo de Proceso</h1>
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @cliente.nombre %>
-</p>
+  </div>
 
-<p>
-  <strong>Direccion:</strong>
-  <%= @cliente.direccion %>
-</p>
+  <div class="box-body">
 
-<p>
-  <strong>Telefono:</strong>
-  <%= @cliente.telefono %>
-</p>
+  <p>
+    <strong>Nombre:</strong>
+    <%= @cliente.nombre %>
+  </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @cliente.email %>
-</p>
+  <p>
+    <strong>Dirección:</strong>
+    <%= @cliente.direccion %>
+  </p>
 
-<p>
-  <strong>Ruc:</strong>
-  <%= @cliente.ruc %>
-</p>
+  <p>
+    <strong>Teléfono:</strong>
+    <%= @cliente.telefono %>
+  </p>
 
-<%= link_to 'Edit', edit_cliente_path(@cliente) %> |
-<%= link_to 'Back', clientes_path %>
+  <p>
+    <strong>Email:</strong>
+    <%= @cliente.email %>
+  </p>
+
+  <p>
+    <strong>Ruc:</strong>
+    <%= @cliente.ruc %>
+  </p>
+
+  <div class="col-xs-12 modal-footer" > 
+    <%= link_to "Atras", clientes_path, class: "btn btn-default", style:"color:black" %>
+    <%= link_to "Editar",  edit_cliente_path(@cliente), class: "btn btn-primary", id: "guardar", style:"color:white" %>
+  </div>
+</div>

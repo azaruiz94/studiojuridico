@@ -10,13 +10,16 @@
       </ul>
     </div>
   <% end %>
+  <div class="box-body">
+    <div class="col-xs-12">
+      <%= f.label :nombre %>
+      <%= f.text_field :nombre, class: "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :nombre %>
-    <%= f.text_field :nombre %>
+    <div class="col-xs-12 modal-footer" >
+      <%= link_to "Cancelar", tipo_procesos_path, class: "btn btn-default", style:"color:black" %>
+      <%= f.submit "Guardar", class: "btn btn-primary", id: "guardar" %>
+    </div> 
   </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  
 <% end %>

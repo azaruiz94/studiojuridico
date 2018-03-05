@@ -1,0 +1,133 @@
+<%= form_for(rol, validate:true) do |f| %>
+  <% if rol.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(rol.errors.count, "error") %> prohibited this rol from being saved:</h2>
+
+      <ul>
+      <% rol.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="box-body">
+    <div class="field">
+      <%= f.label :nombre %>
+      <%= f.text_field :nombre, class: "form-control"%>
+    </div>
+
+    <!-- inicion de autorizaciones-->
+    <div class="form-group">
+      <h4 class="box-title">Acciones</h4>
+      <div class="col-md-12">
+        <table class="table table-responsive">
+          <thead>
+            <tr>
+              <th>
+                  <label>Procesos Contensios</label>
+              </th>
+              <th>
+                  <label>Procesos Civiles - Laborales</label>
+              </th>
+              <th>
+                  <label>Usuarios</label>
+              </th>
+              <th>
+                  <label>Clientes</label>
+              </th>
+              <th>
+                  <label>Empleados</label>
+              </th>
+              
+              
+            </tr>        
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <%= hidden_field_tag "rol[accion_ids][]", nil%>
+
+                <% for i in 1..4 %>
+                  <% a = Accion.find(i) %>
+                  <p> <%= check_box_tag "rol[accion_ids][]", a.id,  @rol.accion_ids.include?(a.id), id: dom_id(a)  %><span><%= label_tag dom_id(a), a.nombre %></span></p>
+                <% end %>
+              </td>
+              <td>
+                <% for i in 5..8 %>
+                  <% a = Accion.find(i) %>
+                  <p> <%= check_box_tag "rol[accion_ids][]", a.id,  @rol.accion_ids.include?(a.id), id: dom_id(a)  %><span><%= label_tag dom_id(a), a.nombre %></span></p>
+                <% end %>
+              </td>
+              <td>
+                <% for i in 9..12 %>
+                  <% a = Accion.find(i) %>
+                  <p> <%= check_box_tag "rol[accion_ids][]", a.id,  @rol.accion_ids.include?(a.id), id: dom_id(a)  %><span><%= label_tag dom_id(a), a.nombre %></span></p>
+                <% end %>
+              </td>
+              <td>
+                <% for i in 13..16 %>
+                  <% a = Accion.find(i) %>
+                  <p> <%= check_box_tag "rol[accion_ids][]", a.id,  @rol.accion_ids.include?(a.id), id: dom_id(a)  %><span><%= label_tag dom_id(a), a.nombre %></span></p>
+                <% end %>
+              </td>
+              <td>
+                <% for i in 17..20 %>
+                  <% a = Accion.find(i) %>
+                  <p> <%= check_box_tag "rol[accion_ids][]", a.id,  @rol.accion_ids.include?(a.id), id: dom_id(a)  %><span><%= label_tag dom_id(a), a.nombre %></span></p>
+                <% end %>
+              </td>
+              
+            </tr>
+          </tbody>
+          <thead>
+            <th>
+                  <label>Intituciones</label>
+              </th>
+            <th>
+                  <label>Objetos de casos</label>
+              </th>
+              <th>
+                  <label>Ciudades</label>
+              </th>
+              <th>
+                  <label>Departamentoss</label>
+              </th>
+          </thead>
+          <tbody>
+            <td>
+                <% for i in 21..24 %>
+                  <% a = Accion.find(i) %>
+                  <p> <%= check_box_tag "rol[accion_ids][]", a.id,  @rol.accion_ids.include?(a.id), id: dom_id(a)  %><span><%= label_tag dom_id(a), a.nombre %></span></p>
+                <% end %>
+              </td>
+              <td>
+                <% for i in 25..28 %>
+                  <% a = Accion.find(i) %>
+                  <p> <%= check_box_tag "rol[accion_ids][]", a.id,  @rol.accion_ids.include?(a.id), id: dom_id(a)  %><span><%= label_tag dom_id(a), a.nombre %></span></p>
+                <% end %>
+              </td>
+              <td>
+                <% for i in 29..32 %>
+                  <% a = Accion.find(i) %>
+                  <p> <%= check_box_tag "rol[accion_ids][]", a.id,  @rol.accion_ids.include?(a.id), id: dom_id(a)  %><span><%= label_tag dom_id(a), a.nombre %></span></p>
+                <% end %>
+              </td>
+              <td>
+                <% for i in 33..36 %>
+                  <% a = Accion.find(i) %>
+                  <p> <%= check_box_tag "rol[accion_ids][]", a.id,  @rol.accion_ids.include?(a.id), id: dom_id(a)  %><span><%= label_tag dom_id(a), a.nombre %></span></p>
+                <% end %>
+              </td>
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="col-xs-12 modal-footer" >
+      <%= link_to "Cancelar", roles_path, class: "btn btn-default", style:"color:black" %>
+      <%= f.submit "Guardar", class: "btn btn-primary", id: "guardar" %>
+    </div> 
+  </div>
+   
+<% end %>

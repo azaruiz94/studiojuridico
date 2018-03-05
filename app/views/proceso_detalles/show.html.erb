@@ -1,13 +1,23 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Etapa:</strong>
-  <%= @proceso_detalle.etapa %>
+  <strong>Numero:</strong>
+  <%= @proceso_detalle.numero %>
 </p>
 
 <p>
-  <strong>Estado:</strong>
-  <%= @proceso_detalle.estado %>
+  <strong>Lugar:</strong>
+  <%= @proceso_detalle.lugar %>
+</p>
+
+<p>
+  <strong>Fecha entrada:</strong>
+  <%= @proceso_detalle.fecha_entrada %>
+</p>
+
+<p>
+  <strong>Fecha salida:</strong>
+  <%= @proceso_detalle.fecha_salida %>
 </p>
 
 <%= link_to 'Edit', edit_proceso_detalle_path(@proceso_detalle) %> |

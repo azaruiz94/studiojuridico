@@ -1,5 +1,7 @@
 class EmpleadosController < ApplicationController
+  load_and_authorize_resource
   before_action :set_empleado, only: [:show, :edit, :update, :destroy]
+  autocomplete :empleado, :ruc, :display_value => :ruc, :extra_data => [:nombre, :email]
 
   # GET /empleados
   # GET /empleados.json

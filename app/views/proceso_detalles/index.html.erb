@@ -5,8 +5,10 @@
 <table>
   <thead>
     <tr>
-      <th>Etapa</th>
-      <th>Estado</th>
+      <th>Numero</th>
+      <th>Lugar</th>
+      <th>Fecha entrada</th>
+      <th>Fecha salida</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,8 +16,10 @@
   <tbody>
     <% @proceso_detalles.each do |proceso_detalle| %>
       <tr>
-        <td><%= proceso_detalle.etapa %></td>
-        <td><%= proceso_detalle.estado %></td>
+        <td><%= proceso_detalle.numero %></td>
+        <td><%= proceso_detalle.lugar %></td>
+        <td><%= proceso_detalle.fecha_entrada %></td>
+        <td><%= proceso_detalle.fecha_salida %></td>
         <td><%= link_to 'Show', proceso_detalle %></td>
         <td><%= link_to 'Edit', edit_proceso_detalle_path(proceso_detalle) %></td>
         <td><%= link_to 'Destroy', proceso_detalle, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -12,18 +12,23 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :etapa %>
-    <%= f.text_field :etapa %>
+    <%= f.label :numero %>
+    <%= f.number_field :numero %>
   </div>
 
   <div class="field">
-    <%= f.label :estado %>
-    <%= f.text_field :estado %>
+    <%= f.label :lugar %>
+    <%= f.text_field :lugar %>
   </div>
 
   <div class="field">
-    <%= f.label :fecha %>
-    <%= f.text_field :fecha %>
+    <%= f.label :fecha_entrada %>
+    <%= f.date_select :fecha_entrada %>
+  </div>
+
+  <div class="field">
+    <%= f.label :fecha_salida %>
+    <%= f.date_select :fecha_salida %>
   </div>
 
   <div class="actions">

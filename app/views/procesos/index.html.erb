@@ -1,5 +1,4 @@
 <div class="box box-primary">
-
   <div class="box-body">
     <div class="row">
       <div class="col-md-2">
@@ -11,10 +10,9 @@
       <thead>
         <tr>
           <th>Cliente</th>
-          <th>Proceso</th>
           <th>Estado</th>
-          <th>Fecha ingreso</th>
-          <th>Fecha salida</th>
+          <th>Fecha Confección</th>
+          <th>Fecha Finalización</th>
           <th>Acciones</th>
         </tr>
       </thead>
@@ -23,13 +21,18 @@
         <% @procesos.each do |proceso| %>
           <tr>
             <td><%= proceso.cliente.nombre if proceso.cliente_id %></td>
-            <td><%= proceso.tipo_proceso.nombre if proceso.tipo_proceso_id %></td>
             <td><%= proceso.estado %></td>
-            <td><%= proceso.fecha_ingreso %></td>
-            <td><%= proceso.fecha_salida %></td>
-            <td align="center"><%= link_to '', proceso, class: 'btn btn-primary btn-sm glyphicon glyphicon-eye-open', style:"color:white", title: 'Ver'  %>
-            <%= link_to '', edit_proceso_path(proceso), class: 'btn btn-default btn-sm glyphicon glyphicon-pencil', title: 'Editar', style: 'color: black;'  %>
-            <%= link_to '', proceso, method: :delete, data: { confirm: 'Are you sure?' },class: 'btn btn-default btn-sm glyphicon glyphicon-trash', style:"color:black", title: 'Eliminar'  %></td>
+            <td><%= proceso.fecha_ingreso.strftime("%d/%m/%Y") if proceso.fecha_ingreso %></td>
+            <td><%= proceso.fecha_salida.strftime("%d/%m/%Y") if  proceso.fecha_salida%></td>
+            <% if can? :show, Proceso %>
+              <td align="center"><%= link_to '', proceso, class: 'btn btn-primary btn-sm glyphicon glyphicon-eye-open', style:"color:white", title: 'Ver'  %>
+            <% end -%>
+            <% if can? :edit, Proceso %>
+              <%= link_to '', edit_proceso_path(proceso), class: 'btn btn-default btn-sm glyphicon glyphicon-pencil', title: 'Editar', style: 'color: black;'  %>
+            <% end -%>
+            <% if can? :destroy, Proceso %>
+              <%= link_to '', proceso, method: :delete, data: { confirm: 'Are you sure?' },class: 'btn btn-default btn-sm glyphicon glyphicon-trash', style:"color:black", title: 'Eliminar'  %></td>
+            <% end -%>
           </tr>
         <% end %>
       </tbody> 
