@@ -6,13 +6,10 @@ class Rol < ApplicationRecord
              :polymorphic => true,
              :optional => true
 # Comento este codigo porque me genera error al querer guardar
-  validates :resource_type,
-            :inclusion => { :in => Rolify.resource_types },
-            :allow_nil => true
+#  validates :resource_type,
+#            :inclusion => { :in => Rolify.resource_types },
+#            :allow_nil => true
 #
 
-  scopify
-
   has_many :usuarios
-  validates :acciones, presence: {message: "Seleccione una acción."}
 end
