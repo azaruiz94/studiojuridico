@@ -33,7 +33,7 @@ class RolesController < ApplicationController
         format.html { redirect_to @rol, notice: 'Rol was successfully created.' }
         format.json { render :show, status: :created, location: @rol }
       else
-        format.html { render :new }
+        format.html { redirect_to new_rol_path, alert: 'El nombre del rol ya existe en la base de datos'}
         format.json { render json: @rol.errors, status: :unprocessable_entity }
       end
     end

@@ -21,6 +21,7 @@ class ProcesosController < ApplicationController
     @clientes = Cliente.all
     @empleados = Empleado.all
     @instituciones= Institucion.all
+    @estados= Estado.all
 
   end
 
@@ -32,6 +33,7 @@ class ProcesosController < ApplicationController
     @detalles = ProcesoDetalle.where("proceso_id = ?", params[:id]).order('numero desc')
     @cliente = Cliente.find(Proceso.find(params[:id]).cliente_id).id
     @empleado = Empleado.find(Proceso.find(params[:id]).empleado_id).id
+    @estados= Estado.all
     @estado= Proceso.find(params[:id]).estado
     @fecha_ingreso= Proceso.find(params[:id]).fecha_ingreso.strftime("%d/%m/%Y")
     @instituciones= Institucion.all
@@ -77,6 +79,33 @@ class ProcesosController < ApplicationController
     end
   end
 
+  def report
+    @procesos_table = Proceso.all 
+    @filterrific = initialize_filterrific(
+    Proceso,
+    params[:filterrific],
+    select_options: {
+      sorted_by_doc_numero: Proceso.options_for_sorted_by_doc_numero,
+      sorted_by_estado: Estado.options_for_sorted_by_estado
+      },
+     persistence_id: false
+    ) or return
+    @procesos_table = @filterrific.find.page(params[:page]).paginate(:per_page => 5, :page => params[:page])
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def print
+    @proceso= Proceso.find(params[:id])
+    respond_to do |format|
+      puts @proceso.doc_numero
+      format.js
+    end
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_proceso
@@ -88,7 +117,7 @@ class ProcesosController < ApplicationController
       params.require(:proceso).permit(
         :doc_numero,
         :referencia,
-        :estado,
+        :estado_id,
         :descripcion,
         :fecha_ingreso,
         :fecha_salida, 

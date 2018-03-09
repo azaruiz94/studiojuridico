@@ -13,9 +13,13 @@
   <div class="box-body">
     <div class="row">
       <div class="col-xs-6">
-        <%= f.label :nombre %>
-        <%= f.text_field :nombre, class: "form-control"%>
+        <div id= "error_field">
+          <%= f.label :nombre %>
+          <%= f.text_field :nombre, class: "form-control", id: "nombre_ciudad"%>
+          <label id="existe_ciudad" class= "message">ya existe la ciudad</label>
+        </div>
       </div>
+      
       <div class="col-xs-6">
         <%= f.label :departamento_id %>
         <%= f.select :departamento_id, options_for_select(@departamentos.collect { |r| [r.nombre, r.id ]}, @departamento), {prompt: 'Seleccione el departamento'}, class: "js-departamento-placeholder-single form-control"%>

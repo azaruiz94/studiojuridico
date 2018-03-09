@@ -1,0 +1,46 @@
+<div class="modal fade" id="show-modal">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Proceso N° <%= @proceso.doc_numero%></h4>
+      </div>
+      
+      <div style="word-wrap: break-word;" class="modal-body"> 
+        <p id="notice"><%= notice %></p>
+        <p>
+          <strong>Doc numero:</strong>
+          <%= @proceso.doc_numero %>
+        </p>
+        <p>
+          <strong>Referencia:</strong>
+          <%= @proceso.referencia %>
+        </p>
+        <p>
+          <strong>Estado:</strong>
+          <%= @proceso.estado.nombre %>
+        </p>
+        <p>
+          <strong>Descripcion:</strong>
+          <%= @proceso.descripcion %>
+        </p>
+        <p>
+          <strong>Fecha ingreso:</strong>
+          <%= @proceso.fecha_ingreso %>
+        </p>
+        <p>
+          <strong>Fecha salida:</strong>
+          <%= @proceso.fecha_salida %>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-default no-print" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+        <%= link_to "Imprimir", '#', class: "btn btn-success", 
+                  onclick: 'window.print();return false;' %>
+      </div>
+         
+   </div>
+ </div>
+</div>

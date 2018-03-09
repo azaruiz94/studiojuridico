@@ -1,6 +1,7 @@
 class Rol < ApplicationRecord
   has_and_belongs_to_many :acciones, :join_table => :acciones_roles
   validates :nombre, presence: {message: "campo obligatorio"}
+  validates_uniqueness_of :nombre, :case_sensitive => true, message: "el nombre del rol ya existe en la base de datos"
 
   belongs_to :resource,
              :polymorphic => true,
@@ -12,4 +13,10 @@ class Rol < ApplicationRecord
 #
 
   has_many :usuarios
+# Si no se puede cargar el rol desde el seed. Borrar estas dos lineas
+  scopify
+  validates :acciones, presence: {message: "Seleccione una acción."}  
+######################################################################
+
+
 end

@@ -79,7 +79,7 @@ class Ability
       if usuario.can_do? "Ver Clientes"
         can [:read, :show], [Cliente]
       end
-      if usuario.can_do? "Crear Clients"
+      if usuario.can_do? "Crear Clientes"
         can [:create, :show], [Cliente]
       end
       if usuario.can_do? "Editar Clientes"

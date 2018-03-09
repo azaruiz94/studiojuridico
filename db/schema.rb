@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180301113417) do
+ActiveRecord::Schema.define(version: 20180307151402) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,12 @@ ActiveRecord::Schema.define(version: 20180301113417) do
     t.integer  "ciudad_id"
     t.index ["ciudad_id"], name: "index_empleados_on_ciudad_id", using: :btree
     t.index ["funcion_id"], name: "index_empleados_on_funcion_id", using: :btree
+  end
+
+  create_table "estados", force: :cascade do |t|
+    t.string   "nombre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "funciones", force: :cascade do |t|
@@ -150,8 +156,10 @@ ActiveRecord::Schema.define(version: 20180301113417) do
     t.integer  "empleado_id"
     t.integer  "cliente_id"
     t.integer  "institucion_id"
+    t.integer  "estado_id"
     t.index ["cliente_id"], name: "index_procesos_on_cliente_id", using: :btree
     t.index ["empleado_id"], name: "index_procesos_on_empleado_id", using: :btree
+    t.index ["estado_id"], name: "index_procesos_on_estado_id", using: :btree
     t.index ["institucion_id"], name: "index_procesos_on_institucion_id", using: :btree
   end
 
@@ -171,7 +179,7 @@ ActiveRecord::Schema.define(version: 20180301113417) do
     t.string   "resource_type"
     t.integer  "resource_id"
     t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false   
+    t.datetime "updated_at",    null: false
     t.index ["nombre", "resource_type", "resource_id"], name: "index_roles_on_nombre_and_resource_type_and_resource_id", using: :btree
     t.index ["nombre"], name: "index_roles_on_nombre", using: :btree
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id", using: :btree
@@ -218,6 +226,7 @@ ActiveRecord::Schema.define(version: 20180301113417) do
   add_foreign_key "proceso_detalles", "procesos"
   add_foreign_key "procesos", "clientes"
   add_foreign_key "procesos", "empleados"
+  add_foreign_key "procesos", "estados"
   add_foreign_key "procesos", "instituciones"
   add_foreign_key "respuestas", "procesos"
   add_foreign_key "usuarios", "empleados"

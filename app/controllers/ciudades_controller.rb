@@ -35,7 +35,7 @@ class CiudadesController < ApplicationController
         format.html { redirect_to ciudades_url, notice: 'La ciudad fue creada con éxito.' }
         format.json { render :show, status: :created, location: @ciudad }
       else
-        format.html { render :new }
+        format.html { redirect_to new_ciudad_path, alert: 'La ciudad ya existe en la base de datos' }
         format.json { render json: @ciudad.errors, status: :unprocessable_entity }
       end
     end
@@ -62,6 +62,13 @@ class CiudadesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to ciudades_url, notice: 'La ciudad fue eliminada con éxito.' }
       format.json { head :no_content }
+    end
+  end
+
+  def check_uniqueness
+    @data= Ciudad.where("nombre ILIKE ?", params[:nombre]).count
+    respond_to do |format|
+      format.json {render json: @data}
     end
   end
 

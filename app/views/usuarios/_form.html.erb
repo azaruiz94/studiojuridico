@@ -11,28 +11,33 @@
     </div>
   <% end %>
   <div class="box-body">
-    <div class="col-xs-12 form-group">
+    <div class="col-xs-4 form-group">
       <label for="ci">RUC o CI</label>
-      <%= f.autocomplete_field :empleado_id, autocomplete_empleado_ruc_empleados_path, placeholder: "Ingrese ruc o ci", :multiple => false, update_elements: {:id=> "#id-empleado", :nombre => '#nombre', :email => '#email'} , class: "form-control", required: true %>
+      <%= f.autocomplete_field :empleado_id, autocomplete_empleado_ruc_empleados_path, placeholder: "Ingrese ruc o ci", :multiple => false, update_elements: {:id=> "#id-empleado", :nombre => '#nombre-virtual', :email => '#email'} , class: "form-control", required: true %>
       <%=f.hidden_field :empleado_id, id: 'id-empleado' %>
     </div>
 
-    <div class="col-xs-6 form-group">
-      <%= f.label :nombre %>
-      <%= f.text_field :nombre, class: "form-control", id: 'nombre', readonly: true%>
+    <div class="col-xs-4 form-group">
+      <%= f.label :nombre_virtual, 'Empleado' %>
+      <%= f.text_field :nombre_virtual, class: "form-control", id: 'nombre-virtual', readonly: true%>
     </div>
 
-    <div class="col-xs-6 form-group">
+    <div class="col-xs-4 form-group">
       <%= f.label :email %>
       <%= f.text_field :email, class: "form-control", id: 'email', readonly: true%>
     </div>
 
-    <div class="col-xs-6 form-group">
+    <div class="col-xs-4 form-group">
+      <%= f.label :nombre, 'Nombre de Usuario' %>
+      <%= f.text_field :nombre, class: "form-control", id: 'nombre'%>
+    </div>
+
+    <div class="col-xs-4 form-group">
       <label for="password">Contraseña</label>
       <%= f.password_field :password,  class: "form-control", placeholder: "Contraseña", required: true  %>
     </div>
 
-    <div class="col-xs-6 form-group">
+    <div class="col-xs-4 form-group">
       <label for="password_confirmation">Confirmar Contraseña</label>
       <%= f.password_field :password_confirmation,  class: "form-control", placeholder: "Confirmar Contraseña", required: true  %>
     </div>

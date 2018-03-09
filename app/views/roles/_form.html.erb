@@ -30,9 +30,6 @@
                   <label>Procesos Civiles - Laborales</label>
               </th>
               <th>
-                  <label>Usuarios</label>
-              </th>
-              <th>
                   <label>Clientes</label>
               </th>
               <th>
@@ -54,12 +51,6 @@
               </td>
               <td>
                 <% for i in 5..8 %>
-                  <% a = Accion.find(i) %>
-                  <p> <%= check_box_tag "rol[accion_ids][]", a.id,  @rol.accion_ids.include?(a.id), id: dom_id(a)  %><span><%= label_tag dom_id(a), a.nombre %></span></p>
-                <% end %>
-              </td>
-              <td>
-                <% for i in 9..12 %>
                   <% a = Accion.find(i) %>
                   <p> <%= check_box_tag "rol[accion_ids][]", a.id,  @rol.accion_ids.include?(a.id), id: dom_id(a)  %><span><%= label_tag dom_id(a), a.nombre %></span></p>
                 <% end %>

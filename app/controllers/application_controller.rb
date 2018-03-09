@@ -14,4 +14,5 @@ class ApplicationController < ActionController::Base
   	flash[:alert] = "Acceso denegado. No tienes autorización."
     redirect_to root_path
   end
+
 end

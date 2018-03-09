@@ -19,8 +19,8 @@
         <% @usuarios.each do |usuario| %>
           <tr>
             <td><%= usuario.nombre %></td>
-            <td><%= link_to '', usuario, class: 'btn btn-primary btn-sm glyphicon glyphicon-eye-open', style:"color:white", title: 'Ver' %></
-            <%= link_to '', edit_usuario_password_path(usuario), class: 'btn btn-default btn-sm glyphicon glyphicon-pencil', title: 'Editar', style: 'color: black;' %>
+            <td><%= link_to '', usuario, class: 'btn btn-primary btn-sm glyphicon glyphicon-eye-open', style:"color:white", title: 'Ver' %>
+            <%= link_to '', edit_usuario_path(usuario), class: 'btn btn-default btn-sm glyphicon glyphicon-pencil', title: 'Editar', style: 'color: black' %>
             <%= link_to '', usuario, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-sm glyphicon glyphicon-trash', style:"color:black", title: 'Eliminar' %></td>
           </tr>
         <% end %>

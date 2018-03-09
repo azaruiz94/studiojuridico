@@ -1,0 +1,31 @@
+<div class="box-body">
+  <div id="filterrific_results">
+    <div class="table-responsive">
+      <table id= "procesos_table" class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>N° de Nota</th>
+            <th>Cliente</th>
+            <th>Estado</th>
+            <th>Encargado</th>
+            <th>Institución</th>
+            <th class="no-print">Imprimir</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @procesos_table.each do |proceso| %>
+            <tr>
+              <td><%= proceso.doc_numero %></td>
+              <td><%= proceso.cliente.nombre %></td>
+              <td><%= proceso.estado.nombre %></td>
+              <td><%= proceso.empleado.nombre %></td>
+              <td><%= proceso.institucion.nombre%></td>
+              <td class="no-print"><%= link_to "", print_path(proceso), remote: true, class: "btn btn-success glyphicon glyphicon-print", style:"color:white" %> </td>
+            </tr>
+          <% end %>
+        </tbody> 
+      </table>
+    </div>
+  </div>
+</div>

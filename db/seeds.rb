@@ -54,11 +54,6 @@ Accion.create(nombre: "Crear Juicios")
 Accion.create(nombre: "Editar Juicios")
 Accion.create(nombre: "Eliminar Juicios")
 
-Accion.create(nombre: "Ver Usuarios")
-Accion.create(nombre: "Crear Usuarios")
-Accion.create(nombre: "Editar Juicios")
-Accion.create(nombre: "Eliminar Juicios")
-
 Accion.create(nombre: "Ver Clientes")
 Accion.create(nombre: "Crear Clientes")
 Accion.create(nombre: "Editar Clientes")
@@ -89,4 +84,7 @@ Accion.create(nombre: "Crear Depatamentos")
 Accion.create(nombre: "Editar Depatamentos")
 Accion.create(nombre: "Eliminar Depatamentos")
 
-Institucion.create(nombre: "Entidad Binacional Yacyreta", direccion: "Circuito Comercial - Encarnacion", telefonoA: "021222345", email: "eby@gov.com.py", ruc: "32756556-5", departamento_id: "1", autoridad: "Ing. Poncho López")
+Institucion.create(nombre: "Entidad Binacional Yacyreta", direccion: "Circuito Comercial - Encarnacion", telefonoA: "021222345", email: "eby@gov.com.py", ruc: "32756556-5", autoridad: "Ing. Poncho López", ciudad_id: "1")
+
+Estado.create(nombre: "Pendiente")
+Estado.create(nombre: "Finalizado")

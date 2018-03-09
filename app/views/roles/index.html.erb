@@ -20,7 +20,9 @@
           <tr>
             <td><%= rol.nombre %></td>
             <td><%= link_to '', rol, class: 'btn btn-primary btn-sm glyphicon glyphicon-eye-open', style:"color:white", title: 'Ver' %>
-            <%= link_to '', edit_rol_path(rol), class: 'btn btn-default btn-sm glyphicon glyphicon-pencil', title: 'Editar', style: 'color: black;' %>
+            <% if rol.nombre != "admin" %>
+              <%= link_to '', edit_rol_path(rol), class: 'btn btn-default btn-sm glyphicon glyphicon-pencil', title: 'Editar', style: 'color: black' %>
+            <% end -%>
             <%= link_to '', rol, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-sm glyphicon glyphicon-trash', style:"color:black", title: 'Eliminar' %></td>
           </tr>
         <% end %>

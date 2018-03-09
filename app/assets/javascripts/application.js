@@ -31,7 +31,7 @@
 //= require fullcalendar/lang/es.js
 //= require bootstrap-datepicker
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.es.js
-
+//= require filterrific/filterrific-jquery
 //= require_tree .
 $(document).ready(function() {
   $("#juicio_tipo_proceso").change(function(){
@@ -53,6 +53,34 @@ $(document).ready(function() {
         for (i = 0; i < obj.length; i++) {
           console.log("%o", obj[i].nombre);
           $("#objeto_id").append("<option value= "+obj[i].id+">"+obj[i].nombre+"</option>");
+        }
+      }
+    });
+  });
+});
+
+$(document).ready(function() {
+  $('#existe_ciudad').hide();
+  $("#nombre_ciudad").change(function(){
+    var entrada = $("#nombre_ciudad").val();
+    $.ajax({
+      url: "/ciudades/check_uniqueness",
+      type: "POST",
+      data: {
+        nombre: entrada
+      },
+      dataType: "json",
+      success: function(response) {
+        jQuery.parseJSON(response)
+        if(response >= 1){
+          $("#nombre_ciudad").addClass("field_with_errors");
+          $("#error_field").addClass("field_with_errors");
+          $('#existe_ciudad').show();
+
+        }else{
+          $("#nombre_ciudad").removeClass("field_with_errors");
+          $("#error_field").removeClass("field_with_errors");
+          $('#existe_ciudad').hide();
         }
       }
     });

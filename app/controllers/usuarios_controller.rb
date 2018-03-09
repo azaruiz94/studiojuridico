@@ -34,7 +34,8 @@ class UsuariosController < ApplicationController
         format.html { redirect_to @usuario, notice: 'Usuario was successfully created.' }
         format.json { render :show, status: :created, location: @usuario }
       else
-        format.html { render :new }
+
+        format.html { redirect_to new_usuario_path, alert: 'El empleado ya posee una cuenta en el sistema o el nombre de usuario ya esta reservado' }
         format.json { render json: @usuario.errors, status: :unprocessable_entity }
       end
     end
@@ -72,6 +73,6 @@ class UsuariosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def usuario_params
-      params.require(:usuario).permit(:nombre, :empleado_id, :email, :password, :password_confirmation, :rol_id)
+      params.require(:usuario).permit(:nombre, :empleado_id, :email, :password, :password_confirmation, :rol_id, :remember_me)
     end
 end

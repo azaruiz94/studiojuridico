@@ -17,11 +17,19 @@ Rails.application.routes.draw do
   get 'objetos/show'
 
   resources :respuestas
-  resources :juicios
+  resources :juicios do
+    collection do
+      get 'report'
+    end
+  end
   resources :actuaciones
   resources :instituciones
   resources :proceso_detalles
-  resources :procesos
+  resources :procesos do
+    collection do
+      get 'report'
+    end
+  end
   resources :tipo_clientes
   resources :departamentos
   resources :ciudades
@@ -35,8 +43,10 @@ Rails.application.routes.draw do
 
   get 'listado/index', as: 'listado'
   get 'welcome/index'
+  get 'procesos/:id/print' => 'procesos#print', as: :print
 
   root :to => 'welcome#index'
 
   post 'juicios/cargar_select', as: 'cargar_select'
+  post 'ciudades/check_uniqueness', as: 'check_uniqueness'
 end

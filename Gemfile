@@ -68,10 +68,23 @@ gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
 # Select con token_fields
 gem 'chosen-rails'
+# Datatables con bootstrap
 gem 'jquery-datatables-rails'
+# Editor de texto
 gem 'ckeditor'
+# Validacion en tiempo real
 gem 'client_side_validations'
 gem 'toastr-rails'
 gem "rolify"
+# Gestión de permisos para usuarios
 gem 'cancancan', '~> 2.0'
+# Autocompletado de formularios
 gem 'rails-jquery-autocomplete'
+# Personalizar errores de validacion de uniqueness
+gem 'activerecord-rescue_from_duplicate'
+# Filtros para reportes
+gem 'filterrific'
+# paginación con bootstrap 4 style
+gem 'will_paginate-bootstrap4'
+# plugin slimscroll
+gem 'jquery-slimscroll-rails'
