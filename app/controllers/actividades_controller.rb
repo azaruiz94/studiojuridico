@@ -17,7 +17,7 @@ class ActividadesController < ApplicationController
     @todas = @filterrific.find.page(params[:page]).paginate(:per_page => 5, :page => params[:page])
     respond_to do |format|
       format.html
-      format.js
+      format.json
     end
     #@mes= Date.today().month
     #@anho= Date.today().year
@@ -36,7 +36,7 @@ class ActividadesController < ApplicationController
 
   # GET /actividades/1/edit
   def edit
-    @fecha= Actividad.find(params[:id]).fin.strftime("%d/%m/%Y %H:%M")
+    @fecha= Actividad.find(params[:id]).inicio.strftime("%d/%m/%Y %H:%M")
   end
 
   def posponer

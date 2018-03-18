@@ -15,8 +15,8 @@ class Rol < ApplicationRecord
   has_many :usuarios
 # Si no se puede cargar el rol desde el seed. Borrar estas dos lineas
 # hablitarlas a la hora de probar o al llevar a produccion
-#  scopify
-#  validates :acciones, presence: {message: "Seleccione una acción."}  
+  scopify
+  validates :acciones, presence: {message: "Seleccione una acción."}  
 ######################################################################
 
 
