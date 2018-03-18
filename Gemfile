@@ -90,3 +90,4 @@ gem 'filterrific'
 gem 'will_paginate-bootstrap4'
 # plugin slimscroll
 gem 'jquery-slimscroll-rails'
+gem 'simple_form'
