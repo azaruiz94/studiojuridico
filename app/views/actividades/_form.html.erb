@@ -1,5 +1,4 @@
 <%= form_for(actividad, validate: true) do |f| %>
-puts @actividad
   <% if actividad.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(actividad.errors.count, "error") %> prohibited this actividad from being saved:</h2>
