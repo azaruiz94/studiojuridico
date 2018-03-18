@@ -135,13 +135,13 @@ class Ability
       if usuario.can_do? "Ver Departamentos"
         can [:read, :show], [Departamento]
       end
-      if usuario.can_do? "Crear Juicios"
+      if usuario.can_do? "Crear Departamentos"
         can [:create, :show], [Departamento]
       end
-      if usuario.can_do? "Editar Juicios"
+      if usuario.can_do? "Editar Departamentos"
         can [:edit, :read], [Departamento]
       end
-      if usuario.can_do? "Eliminar Juicios"
+      if usuario.can_do? "Eliminar Departamentos"
         can :destroy, [Departamento]
       end
   end
