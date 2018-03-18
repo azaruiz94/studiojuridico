@@ -1,7 +1,7 @@
 <body class="sidebar-collapse" onload="colapsarSidebar()">
   <div class="box box-solid">
     <div class="box-header">
-      <h1 align= "center">Reporte de Procesos Contensioso Administrativo</h1> 
+      <h1 align= "center" id= "titulo">Reporte de Procesos Contensioso Administrativo</h1> 
     </div>
   <div class="box-body">
     <div class="row">
@@ -12,9 +12,7 @@
               <div class="col-md-2">
                 <%= f.text_field(:sorted_by_doc_numero, class: 'filterrific-periodically-observed form-control', placeholder:"Buscar por numero")%>
               </div>
-              <div class="col-md-2">
-                <%= f.select(:sorted_by_estado, @filterrific.select_options[:sorted_by_estado], {include_blank: 'Todos los estados'},{:class => 'form-control' })%>
-              </div>
+              
               <div class="col-md-2">
                 <%= f.text_field(:with_cliente, class: 'filterrific-periodically-observed form-control', placeholder:"filtrar por cliente")%>
               </div>
@@ -26,10 +24,14 @@
               <div class="col-md-2">
                 <%= f.text_field(:with_institucion, class: 'filterrific-periodically-observed form-control', placeholder:"buscar por institucion")%>
               </div>
+
+              <div class="col-md-2">
+                <%= f.select(:sorted_by_estado, @filterrific.select_options[:sorted_by_estado], {include_blank: 'Todos los estados'},{:class => 'form-control' })%>
+              </div>
               
               <div class="col-md-2">
                 <%= link_to "Imprimir", '#', class: "btn btn-success", 
-                  onclick: 'window.print();return false;' %>
+                  onclick: 'window.print();return false;', style:"color:white" %>
               </div>
               <% end %>
             </div>

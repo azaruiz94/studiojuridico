@@ -1,33 +1,27 @@
-<p id="notice"><%= notice %></p>
+<div class="box box-primary">
+  <div class="box-body">
+    <table class="table table-bordered table-hover table-responsive table-stripped">
+      <thead>
+        <tr>
+          <th>N° de nota</th>
+          <th>Cliente</th>
+          <th>N° de Memo</th>
+          <th>Fecha de comunicación</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-<h1>Respuestas</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Memo</th>
-      <th>Fecha</th>
-      <th>Medios</th>
-      <th>Descripcion</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @respuestas.each do |respuesta| %>
-      <tr>
-        <td><%= respuesta.memo %></td>
-        <td><%= respuesta.fecha %></td>
-        <td><%= respuesta.medios %></td>
-        <td><%= respuesta.descripcion %></td>
-        <td><%= link_to 'Show', respuesta %></td>
-        <td><%= link_to 'Edit', edit_respuesta_path(respuesta) %></td>
-        <td><%= link_to 'Destroy', respuesta, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Respuesta', new_respuesta_path %>
+      <tbody>
+        <% @respuestas.each do |respuesta| %>
+          <tr>
+            <td><%= respuesta.proceso.doc_numero%></td>
+            <td><%= respuesta.proceso.cliente.nombre%></td>
+            <td><%= respuesta.memo %></td>
+            <td><%= respuesta.fecha %></td>
+            <td><%= link_to '', respuesta, class: 'btn btn-primary btn-sm glyphicon glyphicon-eye-open', style:"color:white" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div> 
+</div>

@@ -56,13 +56,13 @@
                 <% end %>
               </td>
               <td>
-                <% for i in 13..16 %>
+                <% for i in 9..12 %>
                   <% a = Accion.find(i) %>
                   <p> <%= check_box_tag "rol[accion_ids][]", a.id,  @rol.accion_ids.include?(a.id), id: dom_id(a)  %><span><%= label_tag dom_id(a), a.nombre %></span></p>
                 <% end %>
               </td>
               <td>
-                <% for i in 17..20 %>
+                <% for i in 13..16 %>
                   <% a = Accion.find(i) %>
                   <p> <%= check_box_tag "rol[accion_ids][]", a.id,  @rol.accion_ids.include?(a.id), id: dom_id(a)  %><span><%= label_tag dom_id(a), a.nombre %></span></p>
                 <% end %>
@@ -86,6 +86,12 @@
           </thead>
           <tbody>
             <td>
+                <% for i in 17..20 %>
+                  <% a = Accion.find(i) %>
+                  <p> <%= check_box_tag "rol[accion_ids][]", a.id,  @rol.accion_ids.include?(a.id), id: dom_id(a)  %><span><%= label_tag dom_id(a), a.nombre %></span></p>
+                <% end %>
+              </td>
+              <td>
                 <% for i in 21..24 %>
                   <% a = Accion.find(i) %>
                   <p> <%= check_box_tag "rol[accion_ids][]", a.id,  @rol.accion_ids.include?(a.id), id: dom_id(a)  %><span><%= label_tag dom_id(a), a.nombre %></span></p>
@@ -99,12 +105,6 @@
               </td>
               <td>
                 <% for i in 29..32 %>
-                  <% a = Accion.find(i) %>
-                  <p> <%= check_box_tag "rol[accion_ids][]", a.id,  @rol.accion_ids.include?(a.id), id: dom_id(a)  %><span><%= label_tag dom_id(a), a.nombre %></span></p>
-                <% end %>
-              </td>
-              <td>
-                <% for i in 33..36 %>
                   <% a = Accion.find(i) %>
                   <p> <%= check_box_tag "rol[accion_ids][]", a.id,  @rol.accion_ids.include?(a.id), id: dom_id(a)  %><span><%= label_tag dom_id(a), a.nombre %></span></p>
                 <% end %>

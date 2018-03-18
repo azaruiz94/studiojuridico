@@ -37,24 +37,7 @@
 
             <div class="col-sm-4 has-feedback">
               <label for="circunscripcion">Circunscripción</label>
-              <%= f.select(:circunscripcion, options_for_select({
-                "1°- Capital" => "1",
-                "2°- Guaira" => "2",
-                "3°- Itapúa" => "3",
-                "4°- Concepción" => "4",
-                "5°- Amambay" => "5",
-                "6°- Alto Paraná" => "6",
-                "7°- Caaguazú" => "7",
-                "8°- Ñeembucú" => "8",
-                "9°- Misiones" => "9",
-                "10°- Paraguarí" => "10",
-                "11°- Caazapá" => "11",
-                "12°- San Pedro" => "12",
-                "13°- Cordillera" => "13",
-                "14°- Pte. Halles" => "14",
-                "15°- Canindeyú" => "15",
-                "16°- Central" => "16"
-                 }, @circunscripcion), {prompt: 'Seleccione la circunscripción'}, {class: "form-control"})%>
+              <%= f.select(:circunscripcion_id, options_for_select(@circunscripciones.collect { |r| [r.nombre, r.id ]}, @circunscripcion), {prompt: 'Seleccione la circunscripción'}, {class: "form-control"})%>
             </div>
 
             <div class="col-sm-4 has-feedback">
@@ -72,15 +55,20 @@
               <%= f.text_field :fiscal,  class: "form-control" %>
             </div>
 
-            <div class="col-sm-6 has-feedback">
+            <div class="col-sm-4 has-feedback">
               <label for="proceso">Proceso</label>
-              <%= f.select(:proceso, options_for_select({ "Civil" => "Civil", "Laboral" => "Laboral" }, @proceso), {prompt: 'Seleccione el proceso'}, {:class =>"form-control"})%>
+              <%= f.select(:proceso, options_for_select({ "Civil" => "Civil", "Laboral" => "Laboral" }, :selected => @proceso), {prompt: 'Seleccione el proceso'}, {:class =>"form-control"})%>
             </div>
 
-            <div class="col-sm-6 has-feedback">
+            <div class="col-sm-4 has-feedback">
               <label for="tipo_proceso">Tipo de proceso</label>
               <%= f.select(:tipo_proceso, options_for_select({ "Ejecutivo" => "Ejecutivo", "Especial" => "Especial",
-               "Ordinario" => "Ordinario", "Sumario" => "Sumario" }, @tipo_proceso), {prompt: 'Seleccione el tipo de proceso'}, {:class =>"form-control"})%>
+               "Ordinario" => "Ordinario", "Sumario" => "Sumario" }, :selected => @tipo_proceso), {prompt: 'Seleccione el tipo de proceso'}, {:class =>"form-control"})%>
+            </div>
+
+            <div class="col-sm-4 has-feedback">
+              <label for="estado">Estado</label>
+              <%= f.select(:estado_id, options_for_select(@estados.collect { |r| [r.nombre, r.id ]}, @estado), {}, {:class =>"form-control"})%>
             </div>
 
              <div class="col-sm-12 has-feedback">

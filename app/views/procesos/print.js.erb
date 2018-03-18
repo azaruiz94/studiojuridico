@@ -1,4 +1,8 @@
 $('<%= j render "print_handler" %>').on('hidden.bs.modal', function (e) {
+  $("#procesos_table").css("display", "table");
+  $("#titulo").css("text-align", "center");
+  $("#titulo").css("display", "block");
   $(this).remove();
   $('.modal-backdrop').remove();
+  
 }).modal();

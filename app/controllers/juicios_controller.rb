@@ -21,19 +21,26 @@ class JuiciosController < ApplicationController
     @clientes = Cliente.all
     @empleados = Empleado.all
     @objetos = Objeto.all
+    @circunscripciones = Circunscripcion.all
+    @estados= Estado.all
     @numero= 1
   end
 
   # GET /juicios/1/edit
   def edit
+    juicio= Juicio.find(params[:id])
     @clientes = Cliente.all
     @empleados = Empleado.all
     @objetos = Objeto.all
-    @cliente= Juicio.find(params[:id]).cliente_id
-    @empleado= Juicio.find(params[:id]).empleado_id
-    @objeto= Juicio.find(params[:id]).objeto_id
-    @circunscripcion= Juicio.find(params[:id]).circunscripcion
-    @tipo_proceso= Juicio.find(params[:id]).tipo_proceso
+    @circunscripciones = Circunscripcion.all
+    @estados= Estado.all
+    @cliente= juicio.cliente_id
+    @empleado= juicio.empleado_id
+    @objeto= juicio.objeto_id
+    @circunscripcion= juicio.circunscripcion_id
+    @estado= juicio.estado_id
+    @proceso= juicio.proceso
+    @tipo_proceso= juicio.tipo_proceso
     
   end
 
@@ -84,6 +91,31 @@ class JuiciosController < ApplicationController
     end
   end
 
+  def report
+    @juicios_table = Juicio.all 
+    @filterrific = initialize_filterrific(
+    Juicio,
+    params[:filterrific],
+    select_options: {
+      sorted_by_estado: Estado.options_for_sorted_by_estado
+      },
+     persistence_id: false
+    ) or return
+    @juicios_table = @filterrific.find.page(params[:page]).paginate(:per_page => 5, :page => params[:page])
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def imprimir
+    @juicio= Juicio.find(params[:id])
+    @actuaciones= Actuacion.where("juicio_id = ?", params[:id])
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_juicio
@@ -101,7 +133,8 @@ class JuiciosController < ApplicationController
         :cliente_id,
         :empleado_id,
         :objeto_id,
-        :circunscripcion,
+        :estado_id,
+        :circunscripcion_id,
         :actuaciones_attributes => [:id, :numero, :fecha, :descripcion, :tipo, :_destroy])
     end
 end

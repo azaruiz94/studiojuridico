@@ -61,20 +61,6 @@ class Ability
         can :destroy, [Juicio, Actuacion]
       end
 
-      # Acciones Para usuarios
-      if usuario.can_do? "Ver Usuarios"
-        can [:read, :show], [Usuario]
-      end
-      if usuario.can_do? "Crear Usuarios"
-        can [:create, :show], [Usuario]
-      end
-      if usuario.can_do? "Editar Usuarios"
-        can [:edit, :read], [Usuario]
-      end
-      if usuario.can_do? "Eliminar Usuarios"
-        can :destroy, [Usuario]
-      end
-
       # Acciones Para clientes
       if usuario.can_do? "Ver Clientes"
         can [:read, :show], [Cliente]

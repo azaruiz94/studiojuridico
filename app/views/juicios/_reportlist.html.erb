@@ -1,0 +1,38 @@
+<div class="box-body">
+  <div id="filterrific_results">
+    <div class="table-responsive">
+      <table id= "juicios_table" class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Exp N°</th>
+            <th>Cliente</th>
+            <th>Encargado</th>
+            <th>Caratula</th>
+            <th>Proceso</th>
+            <th>Estado</th>
+            <th>Circunscrip.</th>
+            <th class="no-print">Imprimir</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @juicios_table.each do |juicio| %>
+            <tr>
+              <td><%= juicio.exp_numero %></td>
+              <td><%= juicio.cliente.nombre %></td>
+              <td><%= juicio.empleado.nombre %></td>
+              <td><%= juicio.caratula %></td>
+              <td><%= juicio.proceso %></td>
+              <td><%= juicio.estado.nombre %></td>
+              <td><%= juicio.circunscripcion.nombre%></td>
+              <td class="no-print"><%= link_to "", imprimir_juicio_path(juicio), remote: true, class: "btn btn-success glyphicon glyphicon-print", style:"color:white" %> </td>
+            </tr>
+          <% end %>
+        </tbody> 
+      </table>
+      <div class="pagination col-xs-12" style="text-align: right;">
+        <%= will_paginate @juicios_table, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+$('<%= j render "imprimir_handler" %>').on('hidden.bs.modal', function (e) {
+  
+  $("#juicios_table").css("display", "table");
+  $("#juicios_titulo").css("text-align", "center");
+  $("#juicios_titulo").css("display", "block");
+  $(this).remove();
+  $('.modal-backdrop').remove();
+}).modal();

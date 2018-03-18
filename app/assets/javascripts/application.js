@@ -32,6 +32,7 @@
 //= require bootstrap-datepicker
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.es.js
 //= require filterrific/filterrific-jquery
+//= require bootstrap-datetimepicker
 //= require_tree .
 $(document).ready(function() {
   $("#juicio_tipo_proceso").change(function(){

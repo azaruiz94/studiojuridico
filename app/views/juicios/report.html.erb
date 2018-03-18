@@ -1,0 +1,48 @@
+<body class="sidebar-collapse" onload="colapsarSidebar()">
+  <div class="box box-solid">
+    <div class="box-header">
+      <h1 align= "center" id= "juicios_titulo">Reporte de Procesos Civiles - Laborales</h1> 
+    </div>
+  <div class="box-body">
+        <div class="row form-row no-print">
+          <div class="container-fluid">
+            <%= form_for_filterrific @filterrific do |f| %>
+              <div class="form-group has-feedback">
+                <div class="col-md-3 form-group has-feedback">
+                  <%= f.text_field(:with_exp_numero, class: 'filterrific-periodically-observed form-control', placeholder:"filtrar por numero de exp")%>
+                </div>
+
+                <div class="col-md-3 form-group has-feedback">
+                  <%= f.text_field(:with_cliente, class: 'filterrific-periodically-observed form-control', placeholder:"filtrar por cliente")%>
+                </div>
+
+                <div class="col-md-3 form-group has-feedback">
+                  <%= f.text_field(:with_empleado, class: 'filterrific-periodically-observed form-control', placeholder:"filtrar por encargado")%>
+                </div>
+
+                <div class="col-md-3 form-group has-feedback">
+                  <%= f.text_field(:with_caratula, class: 'filterrific-periodically-observed form-control', placeholder:"filtrar por caratula")%>
+                </div>
+                <div class="col-md-3 form-group has-feedback">
+                  <%= f.text_field(:sorted_by_proceso, class: 'filterrific-periodically-observed form-control', placeholder:"filtar por proceso")%>
+                </div>
+                
+                <div class="col-md-3 form-group has-feedback">
+                  <%= f.text_field(:sorted_by_cicunscripcion, class: 'filterrific-periodically-observed form-control form-group', placeholder:"filtrar por circunscrip.")%>
+                </div>
+
+                <div class="col-md-3 form-group has-feedback">
+                  <%= f.select(:sorted_by_estado, @filterrific.select_options[:sorted_by_estado], {include_blank: 'Todos los estados'},{:class => 'form-control' })%>
+                </div>
+                
+                <div class="col-md-3 form-group has-feedback">
+                  <%= link_to "Imprimir", '#', class: "btn btn-success form-group", 
+                    onclick: 'window.print();return false;', style:"color:white" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div> <!--end row-->
+      <%= render(partial: 'juicios/reportlist', locals: { juicios_table: @juicios_table }) %>
+    </div>
+</body>

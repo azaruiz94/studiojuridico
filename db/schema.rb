@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180307151402) do
+ActiveRecord::Schema.define(version: 20180313151021) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,15 @@ ActiveRecord::Schema.define(version: 20180307151402) do
     t.index ["rol_id"], name: "index_acciones_roles_on_rol_id", using: :btree
   end
 
+  create_table "actividades", force: :cascade do |t|
+    t.string   "nombre"
+    t.string   "descripcion"
+    t.datetime "inicio"
+    t.datetime "fin"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "actuaciones", force: :cascade do |t|
     t.integer  "numero"
     t.date     "fecha"
@@ -38,6 +47,13 @@ ActiveRecord::Schema.define(version: 20180307151402) do
     t.datetime "updated_at",  null: false
     t.integer  "juicio_id"
     t.index ["juicio_id"], name: "index_actuaciones_on_juicio_id", using: :btree
+  end
+
+  create_table "circunscripciones", force: :cascade do |t|
+    t.integer  "numero"
+    t.string   "nombre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "ciudades", force: :cascade do |t|
@@ -74,10 +90,8 @@ ActiveRecord::Schema.define(version: 20180307151402) do
     t.string   "ruc"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "funcion_id"
     t.integer  "ciudad_id"
     t.index ["ciudad_id"], name: "index_empleados_on_ciudad_id", using: :btree
-    t.index ["funcion_id"], name: "index_empleados_on_funcion_id", using: :btree
   end
 
   create_table "estados", force: :cascade do |t|
@@ -100,12 +114,10 @@ ActiveRecord::Schema.define(version: 20180307151402) do
     t.string   "email"
     t.string   "ruc"
     t.string   "autoridad"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.integer  "departamento_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer  "ciudad_id"
     t.index ["ciudad_id"], name: "index_instituciones_on_ciudad_id", using: :btree
-    t.index ["departamento_id"], name: "index_instituciones_on_departamento_id", using: :btree
   end
 
   create_table "juicios", force: :cascade do |t|
@@ -114,14 +126,17 @@ ActiveRecord::Schema.define(version: 20180307151402) do
     t.string   "fiscal"
     t.string   "proceso"
     t.string   "tipo_proceso"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.integer  "cliente_id"
     t.integer  "empleado_id"
     t.integer  "objeto_id"
-    t.string   "circunscripcion"
+    t.integer  "estado_id"
+    t.integer  "circunscripcion_id"
+    t.index ["circunscripcion_id"], name: "index_juicios_on_circunscripcion_id", using: :btree
     t.index ["cliente_id"], name: "index_juicios_on_cliente_id", using: :btree
     t.index ["empleado_id"], name: "index_juicios_on_empleado_id", using: :btree
+    t.index ["estado_id"], name: "index_juicios_on_estado_id", using: :btree
     t.index ["objeto_id"], name: "index_juicios_on_objeto_id", using: :btree
   end
 
@@ -217,11 +232,11 @@ ActiveRecord::Schema.define(version: 20180307151402) do
   add_foreign_key "ciudades", "departamentos"
   add_foreign_key "clientes", "tipo_clientes"
   add_foreign_key "empleados", "ciudades"
-  add_foreign_key "empleados", "funciones"
   add_foreign_key "instituciones", "ciudades"
-  add_foreign_key "instituciones", "departamentos"
+  add_foreign_key "juicios", "circunscripciones"
   add_foreign_key "juicios", "clientes"
   add_foreign_key "juicios", "empleados"
+  add_foreign_key "juicios", "estados"
   add_foreign_key "juicios", "objetos"
   add_foreign_key "proceso_detalles", "procesos"
   add_foreign_key "procesos", "clientes"

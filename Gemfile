@@ -59,6 +59,8 @@ gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 #data-provider para fechas
 gem 'bootstrap-datepicker-rails'
+gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
+gem 'bootstrap3-datetimepicker-rails'
 #formularios anidados
 gem "nested_form"
 # Select with search

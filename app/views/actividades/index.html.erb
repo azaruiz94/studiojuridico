@@ -1,0 +1,23 @@
+<div class="box box-primary">
+  <div class="box-body">
+    <div class="row">
+
+          <div class="col-md-12">
+            <div class="form-group">
+              <%= form_for_filterrific @filterrific do |f| %>
+                <div class="col-md-3">
+                  <%= f.text_field(:with_nombre, class: 'filterrific-periodically-observed form-control', placeholder:"filtrar por título")%>
+                </div>
+
+                <div class="col-md-3">
+                  <%= f.text_field(:sorted_by_inicio, class: 'datepicker filterrific-periodically-observed form-control', placeholder:"filtrar por fecha", id: "fecha")%>
+                </div>
+              <% end -%>
+            </div> 
+          </div>
+
+    </div>
+    <br>
+    <%= render(partial: 'actividades/list', locals: { todas: @todas }) %>
+  </div>
+</div>

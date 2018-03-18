@@ -1,24 +1,31 @@
-<p id="notice"><%= notice %></p>
+<div class="box box-primary">
+  <div class="box-header with-border">
+    <h1 align="center">Mostrando Respuesta</h1>
 
-<p>
-  <strong>Memo:</strong>
-  <%= @respuesta.memo %>
-</p>
+  </div>
+  <div class="box-body">
+	<p>
+	  <strong>Memo:</strong>
+	  <%= @respuesta.memo %>
+	</p>
 
-<p>
-  <strong>Fecha:</strong>
-  <%= @respuesta.fecha %>
-</p>
+	<p>
+	  <strong>Fecha:</strong>
+	  <%= @respuesta.fecha.strftime("%d/%m/%Y") %>
+	</p>
 
-<p>
-  <strong>Medios:</strong>
-  <%= @respuesta.medios %>
-</p>
+	<p>
+	  <strong>Medios:</strong>
+	  <%= @respuesta.medios %>
+	</p>
 
-<p>
-  <strong>Descripcion:</strong>
-  <%= @respuesta.descripcion %>
-</p>
+	<p>
+	  <strong>Descripcion:</strong>
+	  <%= raw(@respuesta.descripcion) %>
+	</p>
 
-<%= link_to 'Edit', edit_respuesta_path(@respuesta) %> |
-<%= link_to 'Back', respuestas_path %>
+	<div class="col-xs-12 modal-footer" > 
+	  <%= link_to "Atras", respuestas_path, class: "btn btn-default", style:"color:black" %>
+	</div>
+  </div>
+</div>

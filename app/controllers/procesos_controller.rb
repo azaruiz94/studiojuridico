@@ -85,7 +85,6 @@ class ProcesosController < ApplicationController
     Proceso,
     params[:filterrific],
     select_options: {
-      sorted_by_doc_numero: Proceso.options_for_sorted_by_doc_numero,
       sorted_by_estado: Estado.options_for_sorted_by_estado
       },
      persistence_id: false
@@ -99,8 +98,8 @@ class ProcesosController < ApplicationController
 
   def print
     @proceso= Proceso.find(params[:id])
+    @detalles = ProcesoDetalle.where("proceso_id = ?", params[:id]).order('numero desc')
     respond_to do |format|
-      puts @proceso.doc_numero
       format.js
     end
 

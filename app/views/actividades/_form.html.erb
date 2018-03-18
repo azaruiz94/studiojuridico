@@ -1,0 +1,36 @@
+<%= form_for(actividad, validate: true) do |f| %>
+puts @actividad
+  <% if actividad.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(actividad.errors.count, "error") %> prohibited this actividad from being saved:</h2>
+
+      <ul>
+      <% actividad.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="container-fluid">
+      <div class="col-xs-6">
+        <%= f.label :nombre, 'Título' %>
+        <%= f.text_field :nombre, class: "form-control" %>
+      </div>
+
+      <div class="col-xs-6">
+        <%= f.label :fin, 'Fecha y Hora' %>
+        <%= f.text_field :fin, class: "form-control", id:'datetimepicker2'%>
+      </div>
+
+      <div class="col-xs-12">
+        <%= f.label :descripcion, 'Descripción' %>
+        <%= f.text_area :descripcion, class: "form-control" %>
+      </div>
+      <div class="col-xs-12 modal-footer" >
+          <%= link_to "Cancelar", root_path, class: "btn btn-default", style:"color:black" %>
+          <%= f.submit "Guardar", class: "btn btn-primary", id: "guardar" %>
+      </div>
+    </div>
+  </div>
+<% end %>

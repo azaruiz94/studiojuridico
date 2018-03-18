@@ -19,7 +19,7 @@
     <div class="col-xs-6">
       <p>
         <strong>Circunscripción</strong>
-        <%= @juicio.circunscripcion + "°" %>
+        <%= String(@juicio.circunscripcion.numero) + "° - " + @juicio.circunscripcion.nombre%>
       </p>
       <p>
         <strong>Número de exp.:</strong>
@@ -50,6 +50,11 @@
       <p>
         <strong>Objeto del caso:</strong>
         <%= @juicio.objeto.nombre %>
+      </p>
+
+      <p>
+        <strong>Estado:</strong>
+        <%= @juicio.estado.nombre %>
       </p>
 
     </div>  

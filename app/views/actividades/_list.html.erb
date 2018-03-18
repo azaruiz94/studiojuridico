@@ -1,0 +1,27 @@
+<div id="filterrific_results">
+  <table class="table table-bordered table-hover table-stripped table-responsive" id="todas">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Descripcion</th>
+        <th>Fecha y Hora</th>
+        <th>Hora</th>
+        <th>Ver</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @todas.each do |actividad| %>
+        <tr>
+          <td><%= actividad.nombre %></td>
+          <td><%= actividad.descripcion %></td>
+          <td><%= actividad.inicio.strftime("%d/%m/%Y") %></td>
+          <td><%= actividad.inicio.strftime("%H:%M") %></td>
+          <td><%= link_to '', actividad, class: 'btn btn-default btn-sm glyphicon glyphicon-eye-open', title: 'Editar', style: 'color: black' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="pagination col-xs-12" style="text-align: right;">
+    <%= will_paginate @todas, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+  </div>
+</div>  

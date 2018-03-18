@@ -4,7 +4,7 @@
   </div>
   <div class="box-body">
   	<p>
-	  <strong>Nombre:</strong>
+	  <strong>Nombre de usuario:</strong>
 	  <%= @usuario.nombre %>
 	</p>
 
@@ -17,6 +17,10 @@
 	  <strong>Rol:</strong>
 	  <%= @usuario.rol.nombre %>
 	</p>
+
+	<% @usuario.rol.acciones.each do |r|%>
+	<li style="list-style:none;"><%= r.nombre %></li>
+	<% end -%>
   </div>
 
   <div class="col-xs-12 modal-footer" > 

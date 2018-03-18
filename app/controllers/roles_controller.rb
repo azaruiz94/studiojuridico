@@ -11,6 +11,7 @@ class RolesController < ApplicationController
   # GET /roles/1
   # GET /roles/1.json
   def show
+    @rol= Rol.find(params[:id])
   end
 
   # GET /roles/new
@@ -27,7 +28,6 @@ class RolesController < ApplicationController
   # POST /roles.json
   def create
     @rol = Rol.new(rol_params)
-
     respond_to do |format|
       if @rol.save
         format.html { redirect_to @rol, notice: 'Rol was successfully created.' }

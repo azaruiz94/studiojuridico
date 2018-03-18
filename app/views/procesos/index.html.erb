@@ -21,7 +21,7 @@
         <% @procesos.each do |proceso| %>
           <tr>
             <td><%= proceso.cliente.nombre if proceso.cliente_id %></td>
-            <td><%= proceso.estado %></td>
+            <td><%= proceso.estado.nombre %></td>
             <td><%= proceso.fecha_ingreso.strftime("%d/%m/%Y") if proceso.fecha_ingreso %></td>
             <td><%= proceso.fecha_salida.strftime("%d/%m/%Y") if  proceso.fecha_salida%></td>
             <% if can? :show, Proceso %>

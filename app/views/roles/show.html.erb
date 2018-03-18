@@ -6,7 +6,7 @@
   	<div class="row">
 		 <div class="col-md-12">
 		    <label for="nombre">Nombre: </label>
-		      <%= @rol.nombre.capitalize %>
+		      <%= @rol.nombre %>
 		 </div>
 		 <div class="col-xs-12">
  	 	 	<table class="table table-striped">
@@ -15,15 +15,23 @@
  	 		            <th>Acciones Permitidas</th>
  	 		        </tr>
  	 		    </thead>
- 	 			    <tbody>
+ 	 		    <% if @rol.nombre == "admin" %>
+ 	 			<tbody>
  	 				<tr>
  	 					<td> 
- 	 						<% @rol.acciones.each do |r|%>
- 	 						<li style="list-style:none;"><%= r.nombre %></li>
- 	 						<% end -%>
- 	 					</td>
+	 						Todas las acciones
+	 					</td>
  	 				</tr>
  	 			</tbody>
+ 	 			<% else %>
+ 	 			<tbody>
+ 	 				<td> 
+						<% @rol.acciones.each do |accion|%>
+						<li style="list-style:none;"><%= accion.nombre %></li>
+						<% end -%>
+					</td>
+ 	 			</tbody>
+				<% end -%>	
  	 		</table>	
 		 </div>
 	  </div>

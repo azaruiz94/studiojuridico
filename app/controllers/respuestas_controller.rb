@@ -22,7 +22,7 @@ class RespuestasController < ApplicationController
     @nro_nota= Proceso.find(params[:proceso_id]).doc_numero
     @titulo=Proceso.find(params[:proceso_id]).referencia 
     @referencia= String(@nro_nota) +" - "+ String(@titulo)
-    puts @referencia
+    
   end
 
   # GET /respuestas/1/edit

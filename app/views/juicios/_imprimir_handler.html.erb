@@ -1,0 +1,95 @@
+<div class="modal fade" id="show-modal">
+  
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="col-md-12" id="report_information">
+      </div>
+      <div class="modal-header">
+        <button type="button" class="close no-print" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Proceso con N° de expediente: <%= @juicio.exp_numero%></h4>
+      </div>
+      
+      <div style="word-wrap: break-word;" class="modal-body"> 
+        <p id="notice"><%= notice %></p>
+        <div class="col-xs-6">
+          <p>
+            <strong>Cliente:</strong>
+            <%= @juicio.cliente.nombre %>
+          </p>
+          <p>
+            <strong>Encargado:</strong>
+            <%= @juicio.empleado.nombre %>
+          </p>
+          
+        </div>
+        <div class="col-xs-6">
+          <p>
+            <strong>Circunscripción:</strong>
+            <%= String(@juicio.circunscripcion.numero) + "° - " + @juicio.circunscripcion.nombre%>
+          </p>
+          <p>
+            <strong>Número de exp.:</strong>
+            <%= @juicio.exp_numero %>
+          </p>
+        </div>
+        <div class="col-xs-6">
+          <p>
+            <strong>Carátula:</strong>
+            <%= @juicio.caratula %>
+          </p>
+          <p>
+            <strong>Fiscal a cargo:</strong>
+            <%= @juicio.fiscal %>
+          </p>
+        </div>
+        <div class="col-xs-6">
+          <p>
+            <strong>Proceso:</strong>
+            <%= @juicio.proceso %>
+          </p>
+          <p>
+            <strong>Tipo de proceso:</strong>
+            <%= @juicio.tipo_proceso %>
+          </p>
+        </div>
+        <div class="col-xs-6">
+          <p>
+            <strong>Objeto del caso:</strong>
+            <%= @juicio.objeto.nombre %>
+          </p>
+
+          <p>
+            <strong>Estado:</strong>
+            <%= @juicio.estado.nombre %>
+          </p>
+        </div>  
+        <br>
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>Numero</th>
+              <th>Fecha</th>
+              <th>Descripcion</th>
+              <th>Tipo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @actuaciones.each do |actuacion| %>
+              <tr>
+                <td><%= actuacion.numero %></td>
+                <td><%= actuacion.fecha %></td>
+                <td><%= actuacion.descripcion %></td>
+                <td><%= actuacion.tipo %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-default no-print" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+        <%= link_to "Imprimir", '#', class: "btn btn-success no-print", onclick: 'hideJuiciosTable(); window.print(); return false; showInformation()', style:"color:white", id: "imprimir"%>
+      </div>    
+    </div>
+  </div>
+</div>

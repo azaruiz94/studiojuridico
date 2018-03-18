@@ -21,11 +21,14 @@
               <td><%= proceso.estado.nombre %></td>
               <td><%= proceso.empleado.nombre %></td>
               <td><%= proceso.institucion.nombre%></td>
-              <td class="no-print"><%= link_to "", print_path(proceso), remote: true, class: "btn btn-success glyphicon glyphicon-print", style:"color:white" %> </td>
+              <td class="no-print"><%= link_to "", print_proceso_path(proceso), remote: true, class: "btn btn-success glyphicon glyphicon-print", style:"color:white", onclick: 'hideReportInfo()' %> </td>
             </tr>
           <% end %>
         </tbody> 
       </table>
+      <div class="pagination col-xs-12" style="text-align: right;">
+        <%= will_paginate @procesos_table, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+      </div>
     </div>
   </div>
 </div>

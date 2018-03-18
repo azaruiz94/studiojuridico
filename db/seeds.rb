@@ -14,9 +14,11 @@ Ciudad.create(nombre: "Encarnación", departamento_id: "1")
 Ciudad.create(nombre: "Cambyreta", departamento_id: "1")
 Ciudad.create(nombre: "Cnel. Bogado", departamento_id: "1")
 
-Rol.create(id: "1", nombre: "admin")
-Rol.create(id: "2", nombre: "Gestor Contensioso - Adm")
-Rol.create(id: "3", nombre: "Gestor Civil-Laboral")
+Circunscripcion.create(numero: "1", nombre: "Capital")
+Circunscripcion.create(numero: "2", nombre: "Guairá")
+Circunscripcion.create(numero: "3", nombre: "Itapúa")
+
+Rol.create(nombre: "admin")
 
 Empleado.create(nombre: "Abog. Dario Lopez", direccion: "Corrientes N° 234", telefono: "833453423", email: "dario@gmail.com", ruc: "343537-4", ciudad_id: "1")
 Empleado.create(nombre: "Lic. Marta Torres", direccion: "Constitucion Nacional N° 68", telefono: "445345534", email: "marta@gmail.com", ruc: "363434-4", ciudad_id: "2")
@@ -24,8 +26,6 @@ Empleado.create(nombre: "Dr. Ruben Miranda", direccion: "Avda. Irrazabal", telef
 
 user= Usuario.new
 user= Usuario.create(nombre: "Abog. Dario Lopez", email: "dario@gmail.com", empleado_id: "1", rol_id: "1", password: "123456", password_confirmation: "123456")
-user= Usuario.create(nombre: "Lic. Marta Torres", email: "marta@gmail.com", empleado_id: "2", rol_id: "2", password: "123456", password_confirmation: "123456")
-user= Usuario.create(nombre: "Dr. Ruben Miranda", email: "ruben@gmail.com", empleado_id: "3", rol_id: "3", password: "123456", password_confirmation: "123456")
 
 TipoCliente.create(nombre: "Fisico")
 TipoCliente.create(nombre: "Jurídico")

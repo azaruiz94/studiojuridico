@@ -22,16 +22,16 @@
     
     <div class="col-xs-4">
        <p>
-        <strong>Descripcion:</strong>
+        <strong>Observación:</strong>
         <%= @proceso.descripcion %>
       </p>
       <p>
         <strong>Fecha ingreso:</strong>
-        <%= @proceso.fecha_ingreso %>
+        <%= @proceso.fecha_ingreso.strftime("%d/%m/%Y") %>
       </p>
       <p>
         <strong>Fecha salida:</strong>
-        <%= @proceso.fecha_salida %>
+        <%= @proceso.fecha_salida.strftime("%d/%m/%Y") if @proceso.fecha_salida%>
       </p>
       
     </div>
@@ -71,6 +71,6 @@
     <div class="col-xs-12 modal-footer" > 
           <%= link_to "Atras", procesos_path, class: "btn btn-default", style:"color:black" %>
           <%= link_to "Editar",  edit_proceso_path(@proceso), class: "btn btn-primary", id: "guardar", style:"color:white" %>
-      </div>
+    </div>
   </div>
 </div>

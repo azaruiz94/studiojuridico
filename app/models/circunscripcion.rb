@@ -1,0 +1,2 @@
+class Circunscripcion < ApplicationRecord
+end
