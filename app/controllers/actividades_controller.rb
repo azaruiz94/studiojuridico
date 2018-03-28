@@ -31,7 +31,7 @@ class ActividadesController < ApplicationController
   def json_response
     @actividades = Actividad.where("fin >= ?", Time.now().utc)
     respond_to do |format|
-      format.json {render json: @actividades}
+      format.json
     end
   end
 
