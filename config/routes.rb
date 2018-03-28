@@ -53,4 +53,5 @@ Rails.application.routes.draw do
 
   post 'juicios/cargar_select', as: 'cargar_select'
   post 'ciudades/check_uniqueness', as: 'check_uniqueness'
+  get 'json_response' => 'actividades#json_response', as: :json_response
 end

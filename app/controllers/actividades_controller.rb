@@ -1,10 +1,13 @@
 class ActividadesController < ApplicationController
+  before_action :authenticate_usuario!, :except => [:json_response]
+  skip_before_action :authenticate_usuario!, :only => :json_response_url
+  skip_authorize_resource :only => :json_response_url
   before_action :set_actividad, only: [:show, :edit, :update, :destroy]
 
   # GET /actividades
   # GET /actividades.json
   def index
-    @actividades = Actividad.where("fin > ?", Time.now().utc)
+    @actividades = Actividad.where("fin >= ?", Time.now().utc)
     @todas= Actividad.all
     @filterrific = initialize_filterrific(
     Actividad,
@@ -17,11 +20,19 @@ class ActividadesController < ApplicationController
     @todas = @filterrific.find.page(params[:page]).paginate(:per_page => 5, :page => params[:page])
     respond_to do |format|
       format.html
+      format.js
       format.json
     end
     #@mes= Date.today().month
     #@anho= Date.today().year
     #@dias= Time.days_in_month(@month, @anho)
+  end
+
+  def json_response
+    @actividades = Actividad.where("fin >= ?", Time.now().utc)
+    respond_to do |format|
+      format.json {render json: @actividades}
+    end
   end
 
   # GET /actividades/1
@@ -41,7 +52,6 @@ class ActividadesController < ApplicationController
 
   def posponer
     @actividad= Actividad.find(params[:id])
-    puts @actividad
   end
 
   # POST /actividades

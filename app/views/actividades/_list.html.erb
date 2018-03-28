@@ -4,7 +4,7 @@
       <tr>
         <th>Nombre</th>
         <th>Descripcion</th>
-        <th>Fecha y Hora</th>
+        <th>Fecha</th>
         <th>Hora</th>
         <th>Ver</th>
       </tr>
@@ -16,12 +16,9 @@
           <td><%= actividad.descripcion %></td>
           <td><%= actividad.inicio.strftime("%d/%m/%Y") %></td>
           <td><%= actividad.inicio.strftime("%H:%M") %></td>
-          <td><%= link_to '', actividad, class: 'btn btn-default btn-sm glyphicon glyphicon-eye-open', title: 'Editar', style: 'color: black' %></td>
+          <td><%= link_to '', actividad, class: 'btn btn-default btn-sm glyphicon glyphicon-eye-open', title: 'Ver', style: 'color: black' %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
-  <div class="pagination col-xs-12" style="text-align: right;">
-    <%= will_paginate @todas, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
-  </div>
-</div>  
+</div>

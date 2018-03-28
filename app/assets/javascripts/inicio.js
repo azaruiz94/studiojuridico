@@ -13,15 +13,18 @@ var initialLocaleCode = 'es-us';
 	      text: 'Todas',
 	      click: function() {
 	        window.location='/actividades';
-	      }
+	        }
+	      },
 	    },
-	  },
 	  	eventLimit: true, // for all non-agenda views
 		  views: {
 		    month: {
-		      eventLimit: 4 // adjust to 4 only for agendaWeek/agendaDay
+		      eventLimit: 4 // adjust to 4 only for month view
 		    }
-		  },
+		},
+		views: {
+	       listDay:{ buttonText: 'Hoy' }
+		},
 		eventLimitText: "tareas",
         height: 600,
         lang: 'es',
@@ -30,10 +33,9 @@ var initialLocaleCode = 'es-us';
 			left: 'prev,next today, myCustomButton',
 			center: 'title',
 			right: 'month,basicWeek,listDay, myCustomButton2'
-			},
+		},
       	navLinks: true, // can click day/week names to navigate views
-		businessHours: true, // display business hours
-		editable: true,
+		editable: false,
 		defaultView: 'month'
     })
 });
